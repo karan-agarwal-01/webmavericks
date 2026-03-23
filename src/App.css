@@ -1,0 +1,38 @@
+body {
+    background: black;
+}
+
+@keyframes marquee {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  
+  .marquee {
+    display: inline-flex;
+    width: max-content; 
+    animation: marquee 12s linear infinite;
+  }
+
+  
+  .rainbow-bg {
+    background: linear-gradient(
+      90deg,
+      red,
+      orange,
+      yellow,
+      rgb(0, 182, 0),
+      rgb(1, 178, 237),
+      rgb(144, 3, 246),
+      violet
+    );
+    background-size: 100% auto;
+}
+
+.line {
+    display: block;
+    overflow: hidden;
+}
