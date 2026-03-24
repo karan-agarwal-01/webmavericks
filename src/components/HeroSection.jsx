@@ -2,153 +2,220 @@ import { GoArrowUpRight } from "react-icons/go";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
-import arrowImg from "../assets/images/arrow-down-big.png";
-import bgImg from "../assets/images/1-1.jpg";
 
 const HeroSection = () => {
+    const compRef = useRef(null);
     const arrow1Ref = useRef(null);
     const arrow2Ref = useRef(null);
-    const tl = useRef(null);
-
     const headingRef = useRef(null);
     const textRef = useRef(null);
     const text2Ref = useRef(null);
+    const hoverTl = useRef(null);
+    
+    const headingSplitRef = useRef(null); 
 
-    const bgRef = useRef(null);
+    const orb1Ref = useRef(null);
+    const orb2Ref = useRef(null);
+    const orb3Ref = useRef(null);
 
     useEffect(() => {
-        tl.current = gsap.timeline({ paused: true });
+        headingSplitRef.current = new SplitType(headingRef.current, { types: "words, chars" });
+        const textSplit = new SplitType(textRef.current, { types: "lines, words" });
+        const text2Split = new SplitType(text2Ref.current, { types: "lines" });
 
-        tl.current
-            .to(arrow1Ref.current, {
-                x: 15,
-                y: -15,
-                opacity: 0,
-                duration: 0.3,
-                ease: "power3.out",
-            })
-            .fromTo(
-                arrow2Ref.current,
-                { x: -15, y: 15, opacity: 0 },
-                {
-                    x: 0,
-                    y: 0,
-                    opacity: 1,
+        let ctx = gsap.context(() => {
+            
+            hoverTl.current = gsap.timeline({ paused: true })
+                .to(arrow1Ref.current, {
+                    x: 15,
+                    y: -15,
+                    opacity: 0,
                     duration: 0.3,
-                    ease: "power3.out",
-                },
-                "-=0.2"
-            );
+                    ease: "power2.inOut",
+                })
+                .fromTo(arrow2Ref.current, 
+                    { x: -15, y: 15, opacity: 0 },
+                    { x: 0, y: 0, opacity: 1, duration: 0.3, ease: "power2.out" },
+                    "-=0.2"
+                );
+
+            gsap.from(headingSplitRef.current.chars, {
+                y: 60,
+                opacity: 0,
+                rotateX: -30,
+                duration: 1.2,
+                stagger: 0.02,
+                ease: "expo.out",
+                delay: 0.2
+            });
+
+            gsap.from(textSplit.words, {
+                y: 20,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.02,
+                delay: 0.6,
+                ease: "power3.out",
+            });
+
+            gsap.from(text2Split.lines, {
+                y: 50,
+                opacity: 0,
+                duration: 1.2,
+                stagger: 0.1,
+                delay: 0.8,
+                ease: "expo.out",
+            });
+
+            gsap.to(orb1Ref.current, {
+                x: "15vw", 
+                y: "15vh", 
+                scale: 1.2, 
+                duration: 8, 
+                ease: "sine.inOut", 
+                yoyo: true, 
+                repeat: -1 
+            });
+            
+            gsap.to(orb2Ref.current, {
+                x: "-10vw", 
+                y: "-20vh", 
+                scale: 1.5, 
+                duration: 12, 
+                ease: "sine.inOut", 
+                yoyo: true, 
+                repeat: -1,
+                delay: 1 
+            });
+
+            gsap.to(orb3Ref.current, {
+                scale: 1.4, 
+                opacity: 0.4,
+                duration: 6, 
+                ease: "sine.inOut", 
+                yoyo: true, 
+                repeat: -1 
+            });
+
+        }, compRef);
+
+        return () => {
+            ctx.revert();
+            if (headingSplitRef.current) headingSplitRef.current.revert();
+            SplitType.revert(textRef.current);
+            SplitType.revert(text2Ref.current);
+        };
     }, []);
 
-    const handleMouseEnter = () => {
-        tl.current.play();
+    const handleHeadingHover = () => {
+        if (!headingSplitRef.current) return;
+        
+        gsap.killTweensOf(headingSplitRef.current.chars);
+        
+        gsap.to(headingSplitRef.current.chars, {
+            y: -5,               
+            scale: 1.02,        
+            duration: 0.3, 
+            ease: "sine.inOut",
+            stagger: {
+                each: 0.04,       
+                repeat: -1,       
+                yoyo: true     
+            }
+        });
     };
 
-    const handleMouseLeave = () => {
-        tl.current.reverse();
+    const handleHeadingLeave = () => {
+        if (!headingSplitRef.current) return;
+        
+        gsap.killTweensOf(headingSplitRef.current.chars);
+        
+        gsap.to(headingSplitRef.current.chars, {
+            y: 0,
+            scale: 1,
+            duration: 0.4,
+            ease: "back.out(1.5)",
+        });
     };
 
-    useEffect(() => {
-        const headingSplit = new SplitType(headingRef.current, {
-            types: "lines, words, chars",
-        });
-
-        const textSplit = new SplitType(textRef.current, {
-            types: "lines, words, chars",
-        });
-
-        const text2Split = new SplitType(text2Ref.current, {
-            types: "lines, words, chars",
-        });
-
-        gsap.from(headingSplit.chars, {
-            x: 100,
-            opacity: 0,
-            duration: 2,
-            stagger: 0.03,
-            ease: "power3.out",
-        });
-
-        gsap.from(textSplit.words, {
-            x: 80,
-            opacity: 0,
-            duration: 2,
-            stagger: 0.03,
-            delay: 1.2,
-            ease: "power3.out",
-        });
-
-        gsap.from(text2Split.lines, {
-            y: 100,
-            opacity: -2,
-            duration: 2,
-            stagger: 0.03,
-            delay: 1.5,
-            ease: "power4.out",
-        });
-    }, []);
-
-    useEffect(() => {
-        gsap.to(bgRef.current, {
-            scale: 1.15,
-            y: 20,         
-            duration: 8,         
-            ease: "power1.inOut",
-            repeat: -1,          
-            yoyo: true,          
-        });
-    }, []);
+    const handleMouseEnter = () => hoverTl.current?.play();
+    const handleMouseLeave = () => hoverTl.current?.reverse();
 
     return (
-        <div className="min-h-screen w-full text-white flex flex-col relative">
-            <div className="lg:px-22 md:px-22 px-6 lg:pt-20 md:pt-20 pt-20 lg:pb-16 md:pb-12 pb-4 cursor-pointer lg:w-lg md:w-lg w-xs mb-5">
-                <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                    <div className="flex gap-2">
-                        <p className="ubuntu-regular lg:text-[20px] md:text-[20px] text-md tracking-wider">
-                            We are leading technology <br />solutions providing company.
+        <section data-cursor="yellow" ref={compRef} className="h-auto w-full flex flex-col relative overflow-hidden bg-slate-950">             
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <div className="absolute inset-0 bg-sky-950 z-0"></div>
+                <div ref={orb1Ref} className="absolute -top-20 -left-20 w-125 h-125 rounded-full bg-blue-400 blur-[120px] z-10"></div>
+                <div ref={orb2Ref} className="absolute -bottom-40 -right-20 w-150 h-150 rounded-full bg-fuchsia-700 blur-[150px] z-10"></div>
+                <div ref={orb3Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-100 h-100 rounded-full bg-violet-500 blur-[100px] z-10"></div>
+                <div className="absolute inset-0 z-20 opacity-30 mix-blend-overlay" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }}></div>
+            </div>
+        
+            <div className="px-6 md:px-12 lg:px-12 pt-8  lg:max-w-xl md:max-w-lg mb-5 z-10">
+                <button 
+                    className="group text-left focus:outline-none"
+                    onMouseEnter={handleMouseEnter} 
+                    onMouseLeave={handleMouseLeave}
+                    aria-label="Learn more about our technology solutions"
+                >
+                    <div className="flex items-center gap-4">
+                        <p className="ubuntu-regular lg:text-xl md:text-xl text-md tracking-wider text-slate-200 leading-relaxed">
+                            We are a leading technology <br className="hidden sm:block" /> solutions providing company.
                         </p>
-                        <div className="relative w-6 h-6 overflow-hidden">
-                            <div ref={arrow1Ref} className="absolute top-0 left-0">
-                                <GoArrowUpRight size={26} />
+                        <div className="relative w-10 h-10 overflow-hidden rounded-full bg-slate-800/50 border border-slate-700 group-hover:bg-slate-700/80 group-hover:border-cyan-500/50 transition-all duration-300 flex items-center justify-center text-cyan-400">
+                            <div ref={arrow1Ref} className="absolute flex items-center justify-center">
+                                <GoArrowUpRight size={22} />
                             </div>
-                            <div ref={arrow2Ref} className="absolute top-0 left-0 opacity-0">
-                                <GoArrowUpRight size={26} />
+                            <div ref={arrow2Ref} className="absolute flex items-center justify-center opacity-0">
+                                <GoArrowUpRight size={22} />
                             </div>
                         </div>
                     </div>
-                    <hr className="my-5" />
-                </div>
+                </button>
             </div>
-            <div className="lg:px-22 md:px-22 px-6 relative lg:max-w-4xl md:max-w-3xl max-w-5xl lg:mb-22 md:mb-20 mb-20 lg:mt-0 md:mt-0 mt-10">
-                <h1 ref={headingRef} className="ubuntu-bold lg:text-7xl md:text-6xl text-4xl lg:leading-20 md:leading-20">Webmavericks <br /> Softcoders Pvt Ltd.</h1>
-                <div ref={textRef} className="text-md lg:absolute top-0 right-0 leading-6 my-4 md:my-0">
-                    <p className="text-[#a8a8a8] ubuntu-medium tracking-wide">Unlock the potential of your brand <br /> with our expertise.</p>
-                    <div className="flex">
-                        <p className="text-[#a8a8a8] ubuntu-medium">We make the</p>
-                        <p className="ubuntu-medium ml-1">BEST IT Solutions.</p>
+
+            <div className="px-6 md:px-12 lg:px-12 relative w-full lg:mb-6 md:mb-20 mb-16 z-10 flex flex-col lg:flex-row lg:justify-between lg:items-end gap-10">
+                
+                <div className="overflow-hidden pt-4 cursor-default">
+                    <h1 
+                        ref={headingRef} 
+                        onMouseEnter={handleHeadingHover}
+                        onMouseLeave={handleHeadingLeave}
+                        className="ubuntu-bold lg:text-[5.5rem] md:text-7xl text-4xl leading-[1.05] tracking-tight text-white inline-block"
+                    >
+                        Webmavericks <br /> Softcoders Pvt Ltd.
+                    </h1>
+                </div>
+                
+            </div>
+
+            <div className="px-6 md:px-12 lg:px-12 flex items-center justify-between z-10 pb-8">
+                <div ref={textRef} className="text-md leading-relaxed max-w-sm">
+                    <p className="text-slate-200 ubuntu-medium tracking-wide mb-2">
+                        Unlock the potential of your brand with our expertise.
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 items-center">
+                        <p className="text-slate-200 ubuntu-medium">We build the</p>
+                        <p className="ubuntu-bold text-blue-300 ml-1">
+                            BEST IT Solutions.
+                        </p>
                     </div>
                 </div>
-            </div>
-            <div className="lg:px-22 md:px-22 px-6 lg:pb-5 md:pb-5 pb-1 flex items-center justify-between">
-                <div>
-                    <img src={arrowImg} className="lg:w-40 lg:h-40 md:w-32 md:h-32 h-20 w-20  object-contain bg-transparent" />
-                </div>
-                <div ref={text2Ref} className="ubuntu-medium">
-                    <div className="overflow-hidden">
-                        <h1 className="lg:text-5xl md:text-4xl text-2xl lg:my-2 md:my-2 my-3">500+</h1>
+                <div ref={text2Ref} className="ubuntu-medium text-right">
+                    <div className="overflow-hidden mb-1 pb-2">
+                        <h2 className="lg:text-7xl md:text-6xl text-5xl font-bold text-transparent bg-clip-text bg-linear-to-r from-slate-300 to-blue-400">
+                            500+
+                        </h2>
                     </div>
                     <div className="overflow-hidden">
-                        <p className="lg:text-xl md:text-lg text-md">
+                        <p className="lg:text-xl md:text-lg text-md text-blue-400">
                             Projects completed <br /> successfully
                         </p>
                     </div>
                 </div>
             </div>
-            <div className="absolute inset-0 -z-10 overflow-hidden lg:mt-0 md:mt-0 mt-60">
-                <img ref={bgRef} src={bgImg}  className="w-full h-full object-cover" />
-            </div>
-        </div>
+            
+        </section>
     );
 };
 

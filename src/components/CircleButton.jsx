@@ -2,7 +2,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { GoArrowUpRight } from "react-icons/go";
 
-const CircleButton = ({ text }) => {
+const CircleButton = ({ text, theme }) => {
   const btnRef = useRef(null);
   const fillRef = useRef(null);
 
@@ -81,11 +81,11 @@ const CircleButton = ({ text }) => {
       onMouseEnter={handleEnter}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      className="group relative w-40 h-40 rounded-full border border-[#555555] hover:border-transparent overflow-hidden flex items-center justify-center lg:my-10 md:my-10 my-4 transition-colors">
-      <span ref={fillRef} className="absolute w-full h-full bg-lime-500 rounded-full scale-0" />  
-      <div className="relative z-10 flex items-center gap-1 text-[#555555] group-hover:text-black transition-colors duration-300">
-        <span className="font-medium w-20">{text}</span>
-        <GoArrowUpRight size={16} className="mt-0.5" />
+      className={`group relative w-40 h-40 rounded-full border  ${theme === "dark" ? "border-cyan-500" : "border-slate-900"} hover:border-transparent overflow-hidden flex items-center justify-center lg:my-10 md:my-10 my-4 transition-colors`}>
+      <span ref={fillRef} className="absolute w-full h-full bg-cyan-500 rounded-full scale-0" />  
+      <div className={`relative z-10 flex items-center gap-1 ${theme === "dark" ? "text-white" : "text-slate-900"} group-hover:text-black transition-colors duration-300`}>
+        <span className="ubuntu-medium w-24 text-md">{text}</span>
+        <GoArrowUpRight size={18} className="mt-0.5" />
       </div>
     </button>
   );
