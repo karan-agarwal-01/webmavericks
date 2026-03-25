@@ -7,18 +7,16 @@ import {
     FiUsers, 
     FiLayers, 
     FiPhoneCall, 
-    FiBriefcase,
     FiFacebook,
     FiLinkedin,
     FiInstagram 
 } from "react-icons/fi";
 
 const navLinks = [
-    { name: "Home", icon: FiHome },
-    { name: "About Us", icon: FiUsers },
-    { name: "Services", icon: FiLayers },
-    { name: "Contact us", icon: FiPhoneCall },
-    { name: "Careers", icon: FiBriefcase }
+    { name: "Home", icon: FiHome, href: "/" },
+    { name: "About Us", icon: FiUsers, href: "/about" },
+    { name: "Services", icon: FiLayers, href: "/services" },
+    { name: "Contact us", icon: FiPhoneCall, href: "/contact" },
 ];
 
 const socialLinks = [
@@ -167,7 +165,7 @@ const Navbar = () => {
         const icon = e.currentTarget.querySelector('.nav-link-icon');
         
         gsap.to(text, { x: 0, letterSpacing: "normal", color: "#e2e8f0", duration: 0.5, ease: "expo.out" });
-        gsap.to(icon, { x: 0, color: "#475569", scale: 1, duration: 0.5, ease: "expo.out" });
+        gsap.to(icon, { x: 0, color: "#ffffff", scale: 1, duration: 0.5, ease: "expo.out" });
     };
 
     return (
@@ -247,11 +245,11 @@ const Navbar = () => {
                     </div>
 
                     <div className="flex flex-col justify-center items-center w-full max-w-xl h-full z-20">
-                        <nav className="flex flex-col gap-4 w-full justify-center items-start ml-50">
+                        <nav className="flex flex-col gap-8 w-full justify-center items-start ml-50">
                             {navLinks.map((link, idx) => (
                                 <div key={idx} className="overflow-hidden py-3">
                                     <a 
-                                        href={`#${link.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                        href={link.href}
                                         onClick={() => setIsOpen(false)}
                                         onMouseEnter={handleLinkEnter}
                                         onMouseLeave={handleLinkLeave}

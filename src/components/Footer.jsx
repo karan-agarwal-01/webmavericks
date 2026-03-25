@@ -111,7 +111,7 @@ const FooterSection = () => {
     };
 
     return (
-        <footer ref={footerRef} data-cursor="cyan" className="py-16 md:py-8 px-6 md:px-8 lg:px-10 bg-slate-800 text-slate-100 relative overflow-hidden z-40 border-t border-slate-900">
+        <footer ref={footerRef} data-cursor="cyan" className="py-16 md:py-8 px-6 md:px-8 lg:px-10 bg-slate-900 text-slate-100 relative overflow-hidden z-40 border-t border-slate-900 -mt-10">
             <div className="max-w-7xl mx-auto flex flex-col gap-16 md:gap-12">
                 <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
                     <div className="lg:col-span-5 flex flex-col gap-8 pr-12 lg:border-r border-slate-700 pb-12 lg:pb-0">

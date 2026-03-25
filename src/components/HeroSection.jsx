@@ -160,7 +160,7 @@ const HeroSection = () => {
                 >
                     <div className="flex items-center gap-4">
                         <p className="ubuntu-regular lg:text-xl md:text-xl text-md tracking-wider text-slate-200 leading-relaxed">
-                            We are a leading technology <br className="hidden sm:block" /> solutions providing company.
+                            We craft powerful digital <br className="hidden sm:block" />  experiences that drive growth.
                         </p>
                         <div className="relative w-10 h-10 overflow-hidden rounded-full bg-slate-800/50 border border-slate-700 group-hover:bg-slate-700/80 group-hover:border-cyan-500/50 transition-all duration-300 flex items-center justify-center text-cyan-400">
                             <div ref={arrow1Ref} className="absolute flex items-center justify-center">
@@ -190,14 +190,12 @@ const HeroSection = () => {
             </div>
 
             <div className="px-6 md:px-12 lg:px-12 flex items-center justify-between z-10 pb-8">
-                <div ref={textRef} className="text-md leading-relaxed max-w-sm">
-                    <p className="text-slate-200 ubuntu-medium tracking-wide mb-2">
-                        Unlock the potential of your brand with our expertise.
-                    </p>
+                <div ref={textRef} className="text-lg leading-relaxed max-w-sm">
+                    <p className="text-slate-200 ubuntu-medium tracking-wide mb-2">Transform your ideas into powerful digital products.</p>
                     <div className="flex flex-wrap gap-1.5 items-center">
-                        <p className="text-slate-200 ubuntu-medium">We build the</p>
+                        <p className="text-slate-200 ubuntu-medium">We build smart,</p>
                         <p className="ubuntu-bold text-blue-300 ml-1">
-                            BEST IT Solutions.
+                            Scalable IT Solutions.
                         </p>
                     </div>
                 </div>
@@ -209,7 +207,7 @@ const HeroSection = () => {
                     </div>
                     <div className="overflow-hidden">
                         <p className="lg:text-xl md:text-lg text-md text-blue-400">
-                            Projects completed <br /> successfully
+                            Projects delivered <br /> with excellence
                         </p>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-const CrossBlocks = () => {
+const CrossBlocks = ({ x = 0, _x = 0, y = 120, _y = -120 }) => {
     const sectionRef = useRef(null);
     const leftBlockRef = useRef(null);
     const rightBlockRef = useRef(null);
@@ -17,8 +17,8 @@ const CrossBlocks = () => {
                 },
             });
 
-            tl.to(leftBlockRef.current, { y: 120, rotate: 90, ease: "none" }, 0);
-            tl.to(rightBlockRef.current, { y: -120, rotate: -90, ease: "none" }, 0);
+            tl.to(leftBlockRef.current, { y: y, x: x, rotate: 90, ease: "none" }, 0);
+            tl.to(rightBlockRef.current, { y: _y, x: _x, rotate: -90, ease: "none" }, 0);
 
         }, sectionRef);
 

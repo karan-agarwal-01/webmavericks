@@ -1,12 +1,10 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
-import parralaxImg from "../assets/images/Business.jpg";
-import rightImg from "../assets/images/abd.jpg";
 import CircleButton from "./CircleButton";
 import CrossBlocks from "./Crossblocks";
 
-const AboutSection = () => {
+const AboutSection = ({ text1, text2, para1, para2, img1, img2 }) => {
     const sectionRef = useRef(null);
     const headingRef = useRef(null);
     const leftImgRef = useRef(null);
@@ -75,11 +73,11 @@ const AboutSection = () => {
                 <div className="flex items-center justify-center lg:justify-start mb-16 lg:mb-12 relative z-20">
                     <h2
                         ref={headingRef}
-                        className="text-4xl md:text-5xl lg:text-6xl ubuntu-bold leading-[1.15] perspective-[1000px] text-center lg:text-left text-slate-950"
+                        className="text-4xl md:text-5xl ubuntu-bold leading-[1.15] perspective-[1000px] text-center lg:text-left text-slate-950"
                     >
-                        Accelerate your success with <br className="hidden lg:block" /> 
+                        {text1} <br className="hidden lg:block" /> 
                         <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-cyan-600">
-                            our digital strategies
+                           {text2}
                         </span>
                     </h2>
                 </div>
@@ -89,7 +87,7 @@ const AboutSection = () => {
                     <div className="lg:col-span-4 rounded-2xl overflow-hidden relative shadow-lg">
                         <img 
                             ref={leftImgRef} 
-                            src={parralaxImg} 
+                            src={img1} 
                             className="w-full h-full object-cover scale-125 origin-bottom" 
                             alt="Business Parallax" 
                             data-cursor="light"
@@ -99,10 +97,10 @@ const AboutSection = () => {
                     <div className="lg:col-span-5 flex flex-col gap-8 lg:px-8 relative z-20 lg:pt-12">
                         <div className="flex flex-col gap-6">
                             <p className="ubuntu-regular text-slate-600 text-lg leading-relaxed">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus vel ducimus nobis eveniet, culpa necessitatibus ut laborum facilis quam laboriosam labore earum.
+                                {para1}
                             </p>
                             <p className="ubuntu-regular text-slate-600 text-lg leading-relaxed">
-                                With a team of experienced professionals, the company strives to help businesses achieve their online objectives by providing tailored solutions that cater to their unique needs.
+                                {para2}
                             </p>
                         </div>
                         
@@ -117,7 +115,7 @@ const AboutSection = () => {
                         <div ref={rightImgWrapperRef} className="rounded-xl overflow-hidden aspect-square shadow-2xl relative">
                             <div className="absolute inset-0 bg-slate-900/10 mix-blend-multiply z-10 pointer-events-none"></div>
                             <img 
-                                src={rightImg} 
+                                src={img2} 
                                 className="w-full h-[120%] object-cover object-center grayscale hover:grayscale-0 transition-all duration-700" 
                                 alt="Digital strategy presentation" 
                                 data-cursor="light"
