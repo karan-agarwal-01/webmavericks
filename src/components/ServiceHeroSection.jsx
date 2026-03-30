@@ -94,7 +94,7 @@ const ServiceHeroSection = () => {
                     ref={headingRef} 
                     onMouseEnter={handleHeadingHover} 
                     onMouseLeave={handleHeadingLeave} 
-                    className="ubuntu-bold md:text-7xl text-6xl leading-none tracking-tighter text-white inline-block relative"
+                    className="ubuntu-bold md:text-7xl text-5xl leading-none tracking-tighter text-white inline-block relative"
                 >
                     Our Services
                 </h1>

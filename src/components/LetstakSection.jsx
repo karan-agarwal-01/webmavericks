@@ -60,10 +60,10 @@ const LetstakSection = () => {
     }, []);
 
     return (
-        <section data-cursor="dark" ref={section2Ref} className="h-screen flex items-center justify-center px-6 md:px-12 lg:px-12 shrink-0 overflow-hidden bg-[#f8fafc]">
+        <section data-cursor="dark" ref={section2Ref} className="h-auto flex items-center justify-center px-6 md:px-12 lg:px-12 shrink-0 overflow-hidden bg-[#f8fafc] py-4">
             <div className="relative z-10 flex flex-col items-center">
                 <p ref={subtitleRef} className="text-lg md:text-2xl ubuntu-medium mb-4 md:mb-2 tracking-wide text-black uppercase mt-4">Work with us</p>
-                <h2 ref={headingRef} className="text-4xl md:text-7xl lg:text-8xl ubuntu-semibold tracking-tight mb-4 text-center max-w-5xl leading-[1.05] text-slate-600">
+                <h2 ref={headingRef} className="text-3xl md:text-6xl lg:text-8xl ubuntu-semibold tracking-tight mb-4 text-center max-w-5xl leading-[1.05] text-slate-600">
                     We would love to hear <br className="hidden md:block" /> more about your project
                 </h2>
                 <div ref={btnRef}>

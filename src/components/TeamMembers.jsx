@@ -109,8 +109,8 @@ const TeamMembers = () => {
 
       <div className="mb-16 relative z-10 flex flex-col items-center">
         <div className="overflow-hidden perspective-[1000px]">
-            <h2 className="team-title text-5xl md:text-7xl ubuntu-bold tracking-tighter text-center inline-block text-cyan-400">
-                Our Team
+            <h2 className="team-title text-5xl md:text-6xl ubuntu-bold tracking-tighter text-center inline-block text-cyan-400">
+              The Minds Behind Webmavericks
             </h2>
         </div>
       </div>

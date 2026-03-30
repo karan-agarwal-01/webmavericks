@@ -81,10 +81,10 @@ const CircleButton = ({ text, theme }) => {
       onMouseEnter={handleEnter}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      className={`group relative w-40 h-40 rounded-full border  ${theme === "dark" ? "border-cyan-500" : "border-slate-900"} hover:border-transparent overflow-hidden flex items-center justify-center lg:my-10 md:my-10 my-4 transition-colors`}>
+      className={`group relative lg:w-40 lg:h-40 md:w-40 md:h-40 w-36 h-36 rounded-full border  ${theme === "dark" ? "border-cyan-500" : "border-slate-900"} hover:border-transparent overflow-hidden flex items-center justify-center lg:my-10 md:my-4 my-0 transition-colors`}>
       <span ref={fillRef} className="absolute w-full h-full bg-cyan-500 rounded-full scale-0" />  
       <div className={`relative z-10 flex items-center gap-1 ${theme === "dark" ? "text-white" : "text-slate-900"} group-hover:text-black transition-colors duration-300`}>
-        <span className="ubuntu-medium w-24 text-md">{text}</span>
+        <span className="ubuntu-medium w-28 text-md">{text}</span>
         <GoArrowUpRight size={18} className="mt-0.5" />
       </div>
     </button>

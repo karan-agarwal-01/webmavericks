@@ -145,24 +145,24 @@ const HeroSection = () => {
         <section data-cursor="yellow" ref={compRef} className="h-auto w-full flex flex-col relative overflow-hidden bg-slate-950">             
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 <div className="absolute inset-0 bg-sky-950 z-0"></div>
-                <div ref={orb1Ref} className="absolute -top-20 -left-20 w-125 h-125 rounded-full bg-blue-400 blur-[120px] z-10"></div>
-                <div ref={orb2Ref} className="absolute -bottom-40 -right-20 w-150 h-150 rounded-full bg-fuchsia-700 blur-[150px] z-10"></div>
-                <div ref={orb3Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-100 h-100 rounded-full bg-violet-500 blur-[100px] z-10"></div>
+                <div ref={orb1Ref} className="absolute -top-20 -left-20 lg:w-125 lg:h-125 md:w-70 md:h-70 w-40 h-40 rounded-full bg-blue-400 blur-[120px] z-10"></div>
+                <div ref={orb2Ref} className="absolute -bottom-40 -right-20 lg:w-150 lg:h-150 md:w-75 md:h-75 w-50 h-50 rounded-full bg-fuchsia-700 blur-[150px] z-10"></div>
+                <div ref={orb3Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:w-100 lg:h-100 md:w-50 md:h-50 h-45 w-45 rounded-full bg-violet-500 blur-[100px] z-10"></div>
                 <div className="absolute inset-0 z-20 opacity-30 mix-blend-overlay" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }}></div>
             </div>
         
-            <div className="px-6 md:px-12 lg:px-12 pt-8  lg:max-w-xl md:max-w-lg mb-5 z-10">
+            <div className="px-3 md:px-8 pt-20 md:pt-8 lg:max-w-xl md:max-w-lg mb-5 z-10">
                 <button 
                     className="group text-left focus:outline-none"
                     onMouseEnter={handleMouseEnter} 
                     onMouseLeave={handleMouseLeave}
                     aria-label="Learn more about our technology solutions"
                 >
-                    <div className="flex items-center gap-4">
-                        <p className="ubuntu-regular lg:text-xl md:text-xl text-md tracking-wider text-slate-200 leading-relaxed">
-                            We craft powerful digital <br className="hidden sm:block" />  experiences that drive growth.
+                    <div className="flex flex-row items-center gap-4">
+                        <p className="ubuntu-regular text-lg md:text-xl wider text-slate-200 leading-relaxed">
+                            We design and build digital experiences <br className="hidden sm:block" />that actually move your business forward.
                         </p>
-                        <div className="relative w-10 h-10 overflow-hidden rounded-full bg-slate-800/50 border border-slate-700 group-hover:bg-slate-700/80 group-hover:border-cyan-500/50 transition-all duration-300 flex items-center justify-center text-cyan-400">
+                        <div className="relative w-10 h-10 shrink-0 overflow-hidden rounded-full bg-slate-800/50 border border-slate-700 group-hover:bg-slate-700/80 group-hover:border-cyan-500/50 transition-all duration-300 flex items-center justify-center text-cyan-400">
                             <div ref={arrow1Ref} className="absolute flex items-center justify-center">
                                 <GoArrowUpRight size={22} />
                             </div>
@@ -173,41 +173,38 @@ const HeroSection = () => {
                     </div>
                 </button>
             </div>
-
-            <div className="px-6 md:px-12 lg:px-12 relative w-full lg:mb-6 md:mb-20 mb-16 z-10 flex flex-col lg:flex-row lg:justify-between lg:items-end gap-10">
-                
+            <div className="px-3 md:px-8 relative w-full lg:mb-6 md:mb-16 mb-12 z-10 flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 md:gap-10">  
                 <div className="overflow-hidden pt-4 cursor-default">
                     <h1 
                         ref={headingRef} 
                         onMouseEnter={handleHeadingHover}
                         onMouseLeave={handleHeadingLeave}
-                        className="ubuntu-bold lg:text-[5.5rem] md:text-7xl text-4xl leading-[1.05] tracking-tight text-white inline-block"
+                        className="ubuntu-bold lg:text-[5.5rem] md:text-6xl sm:text-5xl text-4xl leading-[1.05] tracking-tight text-white inline-block"
                     >
                         Webmavericks <br /> Softcoders Pvt Ltd.
                     </h1>
+                    <p className="ubuntu-medium-italic text-md md:text-lg text-white my-2">Where Ideas Turn Into Scalable Digital Products.</p>
                 </div>
-                
             </div>
-
-            <div className="px-6 md:px-12 lg:px-12 flex items-center justify-between z-10 pb-8">
-                <div ref={textRef} className="text-lg leading-relaxed max-w-sm">
-                    <p className="text-slate-200 ubuntu-medium tracking-wide mb-2">Transform your ideas into powerful digital products.</p>
+            <div className="px-3 md:px-8 flex flex-col md:flex-row items-start md:items-center justify-between z-10 pb-4 gap-8 md:gap-0">
+                <div ref={textRef} className="text-sm md:text-md lg:text-lg leading-relaxed lg:max-w-lg md:max-w-md">
+                    <p className="text-slate-200 ubuntu-medium tracking-wide mb-2">We turn your ideas into real, high-performing digital products people love to use.</p>
                     <div className="flex flex-wrap gap-1.5 items-center">
-                        <p className="text-slate-200 ubuntu-medium">We build smart,</p>
-                        <p className="ubuntu-bold text-blue-300 ml-1">
-                            Scalable IT Solutions.
+                        <p className="text-slate-200 ubuntu-medium">We build smart, reliable, and scalable solutions that</p>
+                        <p className="ubuntu-bold text-blue-300">
+                            Grow with your business.
                         </p>
                     </div>
                 </div>
-                <div ref={text2Ref} className="ubuntu-medium text-right">
-                    <div className="overflow-hidden mb-1 pb-2">
-                        <h2 className="lg:text-7xl md:text-6xl text-5xl font-bold text-transparent bg-clip-text bg-linear-to-r from-slate-300 to-blue-400">
+                <div ref={text2Ref} className="ubuntu-medium text-left md:text-right w-full md:w-auto">
+                    <div className="overflow-hidden mb-1 lg:pb-2 pb-1">
+                        <h2 className="lg:text-6xl md:text-5xl text-4xl ubuntu-bold text-transparent bg-clip-text bg-linear-to-r from-slate-300 to-blue-400">
                             500+
                         </h2>
                     </div>
                     <div className="overflow-hidden">
-                        <p className="lg:text-xl md:text-lg text-md text-blue-400">
-                            Projects delivered <br /> with excellence
+                        <p className="lg:text-lg md:text-md text-sm text-blue-400">
+                            Projects successfully delivered <br /> with precision and trust.
                         </p>
                     </div>
                 </div>

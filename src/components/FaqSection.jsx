@@ -1,34 +1,32 @@
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { FiPlus } from "react-icons/fi";
-import CircleButton from "./CircleButton";
-import SplitType from "split-type";
 
 const faqData = [
     {
         id: "01",
-        question: "How long does it typically take to complete a project?",
-        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        question: "How long does it take to complete a project?",
+        answer: "Project timelines depend on the scope and complexity of the work. A simple website may take a few weeks, while larger applications can take several months. We always provide a clear timeline after understanding your requirements.",
     },
     {
         id: "02",
         question: "Do you offer post-launch support and maintenance?",
-        answer: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        answer: "Yes, we provide ongoing support and maintenance to ensure your product runs smoothly after launch. This includes updates, performance optimization, and resolving any issues that may arise.",
     },
     {
         id: "03",
         question: "What is your pricing structure?",
-        answer: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.",
+        answer: "Our pricing is based on the specific requirements of your project. We offer flexible models including fixed pricing and milestone-based payments, ensuring transparency and value for your investment.",
     },
     {
         id: "04",
-        question: "Can we integrate our existing tools and CRM?",
-        answer: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+        question: "Can you integrate with our existing tools or systems?",
+        answer: "Absolutely. We can integrate your existing tools, APIs, and CRM systems to ensure a seamless workflow and better efficiency across your business operations.",
     },
     {
         id: "05",
-        question: "What is the typical onboarding process?",
-        answer: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
+        question: "What does your onboarding process look like?",
+        answer: "We start with a discovery call to understand your goals and requirements. After that, we define the project scope, timeline, and roadmap before moving into design and development.",
     },
 ];
 
@@ -101,7 +99,7 @@ const FaqSection = () => {
                                             <span className={`text-lg md:text-xl mt-1 ubuntu-medium transition-colors duration-300 ${isOpen ? 'text-cyan-400' : 'text-slate-600 group-hover:text-cyan-400'}`}>
                                                 {faq.id}
                                             </span>
-                                            <h3 className={`text-xl md:text-2xl font-semibold transition-colors duration-300 ${isOpen ? 'text-slate-50' : 'text-slate-300 group-hover:text-cyan-50'}`}>
+                                            <h3 className={`text-md md:text-2xl font-semibold transition-colors duration-300 ${isOpen ? 'text-slate-50' : 'text-slate-300 group-hover:text-cyan-50'}`}>
                                                 {faq.question}
                                             </h3>
                                         </div>
@@ -116,7 +114,7 @@ const FaqSection = () => {
                                         }`}
                                     >
                                         <div className="overflow-hidden">
-                                            <p className="text-slate-400 text-base md:text-lg leading-relaxed ubuntu-regular pl-14 md:pl-16 pr-4 md:pr-16">
+                                            <p className="text-slate-400 text-sm md:text-lg leading-relaxed ubuntu-regular pl-14 md:pl-16 pr-4 md:pr-16">
                                                 {faq.answer}
                                             </p>
                                         </div>

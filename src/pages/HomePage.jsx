@@ -14,7 +14,7 @@ const HomePage = () => {
     return (
         <>
         <HeroSection />
-        <AboutSection text1={"Empowering brands to grow faster"} text2={"through smart digital strategies"} para1={"We help businesses transform ideas into impactful digital experiences. From strategy to execution, our focus is on creating solutions that not only look great but perform exceptionally"} para2={"Our team blends creativity with technology to deliver tailored solutions that align with your goals, ensuring long-term growth and measurable results."} img1={parralaxImg} img2={rightImg} />
+        <AboutSection text1={"Helping businesses grow with clarity"} text2={"through smart and scalable digital solutions"} para1={"We partner with businesses to turn ideas into meaningful digital products. From understanding your vision to building and launching it, we focus on creating solutions that are not just visually impressive, but built to perform in the real world."} para2={"Our team combines thoughtful design with modern technology to craft solutions tailored to your goals. Every project we build is designed for scalability, performance, and long-term impact—so your business keeps growing without limits."} img1={parralaxImg} img2={rightImg} />
         <ServicesSection />
         <StatsSection />
         <WorkflowSection />

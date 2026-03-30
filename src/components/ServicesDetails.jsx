@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { GoArrowUpRight } from "react-icons/go";
 import SplitType from "split-type";
 import { FiMonitor, FiSmartphone, FiAperture, FiLayout } from "react-icons/fi";
 import CrossBlocks from "./Crossblocks";
@@ -8,8 +7,8 @@ import CrossBlocks from "./Crossblocks";
 const servicesData = [
     {
         id: "01",
-        title: "Next.js Ecosystems",
-        description: "Building high-performance, SEO-optimized web applications with server-side rendering, static site generation, and seamless API integrations.",
+        title: "Web Application Development",
+        description: "We build fast, scalable, and SEO-friendly web applications using modern frameworks like Next.js, ensuring high performance and seamless user experience.",
         icon: FiMonitor,
         color: "from-blue-600/20 to-cyan-500/5",
         borderColor: "border-blue-500/30",
@@ -17,8 +16,8 @@ const servicesData = [
     },
     {
         id: "02",
-        title: "Cross-Platform Mobile",
-        description: "Delivering native-feeling mobile experiences for iOS and Android using a single, highly efficient React Native codebase.",
+        title: "Mobile App Development",
+        description: "We develop cross-platform mobile applications that deliver smooth, reliable, and consistent performance across both Android and iOS devices.",
         icon: FiSmartphone,
         color: "from-purple-600/20 to-fuchsia-500/5",
         borderColor: "border-purple-500/30",
@@ -26,8 +25,8 @@ const servicesData = [
     },
     {
         id: "03",
-        title: "Generative AI & Media",
-        description: "Integrating cutting-edge image generation, dynamic modification pipelines, and AI-driven media directly into your digital products.",
+        title: "Backend Development",
+        description: "We build secure and scalable backend systems, APIs, and databases that ensure your applications run efficiently and handle growth with ease.",
         icon: FiAperture,
         color: "from-emerald-600/20 to-teal-500/5",
         borderColor: "border-emerald-500/30",
@@ -35,14 +34,15 @@ const servicesData = [
     },
     {
         id: "04",
-        title: "Interactive UI/UX",
-        description: "Crafting immersive, award-winning interfaces with GSAP motion design, WebGL, and fluid micro-interactions that captivate users.",
+        title: "UI/UX Design",
+        description: "We design clean, user-friendly interfaces focused on usability, accessibility, and creating seamless digital experiences for your users.",
         icon: FiLayout,
         color: "from-orange-600/20 to-amber-500/5",
         borderColor: "border-orange-500/30",
         shadowGlow: "group-hover:shadow-[0_0_60px_0px_rgba(249,115,22,0.4)]"
     }
 ];
+
 
 const ServicesSection = () => {
     const sectionRef = useRef(null);
@@ -131,21 +131,23 @@ const ServicesSection = () => {
                         Our Expertise
                     </h4>
                     <div className="perspective-[1000px]">
-                        <h2 className="services-title text-5xl md:text-6xl lg:text-7xl ubuntu-bold leading-[1.05] tracking-tighter">
+                        <h2 className="services-title text-3xl md:text-6xl lg:text-7xl ubuntu-bold leading-[1.05] tracking-tighter">
                             IT Services & Consulting
                         </h2>
                     </div>
-                    <div className="mt-4 max-w-md">
-                        <p className="services-desc text-slate-400 text-lg leading-relaxed ubuntu-regular">
-                            We don't just build software; we architect scalable ecosystems. Partner with us to transform complex challenges into elegant, high-performance digital realities.
-                        </p>
-                    </div>
-                    <div className="ml-20">
-                        <CrossBlocks />
+                    <div className="flex lg:flex-col">
+                        <div className="mt-4 max-w-md">
+                            <p className="services-desc text-slate-400 text-md md:text-xl lg:text-lg leading-relaxed ubuntu-regular">
+                                We don't just build software; we architect scalable ecosystems. Partner with us to transform complex challenges into elegant, high-performance digital realities.
+                            </p>
+                        </div>
+                        <div className="hidden md:block ml-20 lg:mt-0 md:-mt-10">
+                            <CrossBlocks />
+                        </div>
                     </div>
                 </div>
 
-                <div className="w-full lg:w-6/12 flex flex-col gap-6 lg:gap-4 pb-12 lg:pb-10 relative z-20">
+                <div className="w-full lg:w-6/12 flex flex-col gap-6 lg:gap-4 pb-12 lg:pb-10 relative z-20 lg:mt-0 -mt-16">
                     {servicesData.map((service, index) => (
                         <div key={service.id} className="card-wrapper sticky w-full " style={{ top: `calc(10vh + ${index * 2}rem)` }}>
                             <div className={`card-inner w-full rounded-[2rem] border bg-slate-950 bg-linear-to-br ${service.color} p-4 md:p-12 shadow-[0_10px_30px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden group cursor-pointer transition-shadow duration-500 ease-out ${service.borderColor} ${service.shadowGlow}`}
@@ -159,16 +161,16 @@ const ServicesSection = () => {
                                     <div className={`w-16 h-16 rounded-2xl border ${service.borderColor} bg-[#0f1014]/50 flex items-center justify-center text-slate-300 group-hover:text-white transition-colors duration-300 backdrop-blur-md`}>
                                         <service.icon size={28} strokeWidth={1.5} />
                                     </div>
-                                    <span className="text-6xl md:text-7xl ubuntu-bold text-white/10 group-hover:text-white/20 transition-colors duration-500 tracking-tighter">
+                                    <span className="text-5xl md:text-6xl lg:text-7xl ubuntu-bold text-white/10 group-hover:text-white/20 transition-colors duration-500 tracking-tighter">
                                         {service.id}
                                     </span>
                                 </div>
 
                                 <div className="relative z-10 mt-auto pt-16 md:pt-8">
-                                    <h3 className="text-3xl md:text-4xl ubuntu-bold text-white mb-4 tracking-tight">
+                                    <h3 className="text-2xl md:text-3xl lg:text-4xl ubuntu-bold text-white mb-4 tracking-tight">
                                         {service.title}
                                     </h3>
-                                    <p className="text-slate-300/80 text-lg leading-relaxed max-w-lg ubuntu-regular group-hover:text-white transition-colors duration-300">
+                                    <p className="text-slate-300/80 md:text-lg text-md leading-relaxed max-w-lg ubuntu-regular group-hover:text-white transition-colors duration-300">
                                         {service.description}
                                     </p>
                                 </div>

@@ -5,9 +5,9 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const statsData = [
-    { id: 1, target: 500, suffix: "+", label: "Project completed" },
-    { id: 2, target: 100, suffix: "+", label: "Happy customers" },
-    { id: 3, target: 6, suffix: "", label: "Years experiences" },
+    { id: 1, target: 500, suffix: "+", label: "Projects Delivered" },
+    { id: 2, target: 100, suffix: "+", label: "Happy Clients" },
+    { id: 3, target: 6, suffix: "", label: "Years of Experience" },
     { id: 4, target: 50, suffix: "+", label: "Team Members" },
 ];
 
@@ -71,7 +71,7 @@ const StatsSection = () => {
             className="py-8 w-full bg-[#f8fafc] text-slate-900 relative overflow-hidden flex justify-center"
         >
             <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
-                <div className="flex flex-col lg:flex-row justify-between items-center gap-10">
+                <div className="flex flex-wrap justify-center items-center lg:gap-10 md:gap-8 gap-6">
                     {statsData.map((stat, index) => (
                         <div 
                             key={stat.id}

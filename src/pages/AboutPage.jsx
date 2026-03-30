@@ -12,7 +12,7 @@ const AboutPage = () => {
   return (
         <>
         <AboutHeroSection />
-        <AboutSection text1={"Driven by passion, built on"} text2={"innovation & trust"} para1={"We are a team of creative thinkers and problem solvers dedicated to building meaningful digital experiences. Our journey is rooted in a passion for technology and a commitment to helping businesses grow."} para2={"By combining strategy, design, and development, we create solutions that are not only functional but truly impactful. Every project we take on reflects our focus on quality, trust, and long-term partnerships."} img1={parralaxImg} img2={rightImg} />
+        <AboutSection text1={"Driven by innovation, built for your growth"} text2={"at Webmavericks Softcoders"} para1={"At Webmavericks Softcoders, we don’t just build software—we build digital solutions that solve real business problems. Every project we take on starts with understanding your vision, your challenges, and your goals, so we can create something that truly makes an impact."} para2={"With a team passionate about technology and innovation, we deliver solutions that are reliable, scalable, and future-ready. From startups to growing businesses, we help our clients move faster, work smarter, and achieve sustainable digital growth."} img1={parralaxImg} img2={rightImg} />
         <ApproachSection />
         <StatsSection />
         <WorkflowSection />

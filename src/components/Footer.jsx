@@ -111,48 +111,53 @@ const FooterSection = () => {
     };
 
     return (
-        <footer ref={footerRef} data-cursor="cyan" className="py-16 md:py-8 px-6 md:px-8 lg:px-10 bg-slate-900 text-slate-100 relative overflow-hidden z-40 border-t border-slate-900 -mt-10">
-            <div className="max-w-7xl mx-auto flex flex-col gap-16 md:gap-12">
+        <footer ref={footerRef} data-cursor="cyan" className="py-4 md:py-8 px-4 md:px-6 lg:px-10 bg-slate-900 text-slate-100 relative overflow-hidden z-40 border-t border-slate-900 ">
+            <div className="max-w-7xl mx-auto flex flex-col gap-12 md:gap-16 lg:gap-12">
                 <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-                    <div className="lg:col-span-5 flex flex-col gap-8 pr-12 lg:border-r border-slate-700 pb-12 lg:pb-0">
+                    
+                    <div className="lg:col-span-5 flex flex-col gap-6 md:gap-8 pr-0 md:pr-12 lg:pr-12 lg:border-r border-slate-700 pb-8 md:pb-12 lg:pb-0">
                         <div className="overflow-hidden pb-2">
-                            <h3 ref={titleRef} className="text-2xl ubuntu-bold tracking-tight text-slate-100 transition-colors duration-300">
+                            <h3 ref={titleRef} className="text-xl md:text-3xl lg:text-2xl ubuntu-bold tracking-tight text-slate-100 transition-colors duration-300">
                                 Webmavericks Softcoders Pvt. Ltd.
                             </h3>
                         </div>
-                        <p ref={descRef} className="text-slate-400 text-md leading-relaxed ubuntu-regular max-w-sm">
+                        <p ref={descRef} className="text-slate-400 text-base md:text-lg lg:text-base leading-relaxed ubuntu-regular max-w-sm md:max-w-md lg:max-w-sm">
                             Our team is always available to answer questions, offer guidance, and provide ongoing support. We believe in collaborative partnerships that drive sustainable digital growth.
                         </p>
                     </div>
-                    <div className="lg:col-span-3 flex flex-col lg:items-center justify-center lg:border-r border-slate-700 lg:px-12 py-12 lg:py-0 border-y lg:border-y-0 relative">
+
+                    <div className="lg:col-span-3 flex flex-col lg:items-center justify-center lg:border-r border-slate-700 lg:px-12 py-8 md:py-12 lg:py-0 border-y lg:border-y-0 relative">
                         <div className="lg:hidden absolute top-0 left-0 right-0 h-px bg-slate-800"></div>
                         <div className="lg:hidden absolute bottom-0 left-0 right-0 h-px bg-slate-800"></div>
-                        <div className="flex flex-col items-start gap-8 w-full">
+                        
+                        <div className="flex flex-row lg:flex-col items-start sm:items-center lg:items-start justify-between sm:justify-around lg:justify-start lg:gap-6 md:gap-4 gap-2 w-full">
                             {socialLinks.map((link) => (
-                                <a key={link.name} href={link.href} className="social-link group flex lg:justify-center items-center gap-4 text-slate-500 ubuntu-medium text-xl md:text-2xl tracking-tight transition-colors duration-300 hover:text-slate-200">
-                                    <link.icon className="hidden md:block text-cyan-700 group-hover:text-cyan-400 transition-colors duration-300" size={20} />
-                                    <span className="ubuntu-medium text-lg relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-right after:scale-x-0 group-hover:after:origin-bottom-left group-hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-300 after:bg-cyan-400">
+                                <a key={link.name} href={link.href} className="social-link group flex lg:justify-center items-center gap-4 text-slate-500 ubuntu-medium text-lg sm:text-xl md:text-2xl tracking-tight transition-colors duration-300 hover:text-slate-200">
+                                    <link.icon className="text-cyan-700 group-hover:text-cyan-400 transition-colors duration-300" size={20} />
+                                    <span className="ubuntu-medium text-base sm:text-lg relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-right after:scale-x-0 group-hover:after:origin-bottom-left group-hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-300 after:bg-cyan-400">
                                         {link.name}
                                     </span>
                                 </a>
                             ))}
                         </div>
                     </div>
-                    <a href="#" onMouseEnter={handleCtaHover} onMouseLeave={handleCtaLeave} data-cursor-interactive className="lg:col-span-4 flex items-center justify-center group relative h-48 lg:h-full lg:pl-20 mt-12 lg:mt-0 transition-colors duration-500 rounded-2xl lg:rounded-none">
-                        <div className="overflow-hidden pb-4 pt-4 px-8">
-                            <h2 ref={ctaRef} className="text-6xl md:text-7xl xl:text-5xl ubuntu-bold tracking-tighter text-cyan-400 inline-block transition-transform duration-700 group-hover:scale-105">
+
+                    <a href="#" onMouseEnter={handleCtaHover} onMouseLeave={handleCtaLeave} data-cursor-interactive className="lg:col-span-4 flex items-center justify-center group relative h-10 md:h-24 lg:h-full lg:pl-20 mt-8 lg:mt-0 transition-colors duration-500 rounded-2xl lg:rounded-none">
+                        <div className="overflow-hidden pb-4 pt-4 px-2 sm:px-8">
+                            <h2 ref={ctaRef} className="text-5xl sm:text-6xl md:text-7xl xl:text-5xl ubuntu-bold tracking-tighter text-cyan-400 inline-block transition-transform duration-700 group-hover:scale-105 whitespace-nowrap">
                                 LET'S TALK
                             </h2>
                         </div>
                     </a>
                 </div>
-                <div className="flex flex-col md:flex-row justify-between items-center gap-8 border-t border-slate-700 pt-8">
-                    <p className="text-slate-500 ubuntu-regular text-md tracking-tight text-center md:text-left">
+
+                <div className="flex flex-col lg:flex-row justify-between items-center gap-4 lg:gap-8 border-t border-slate-700 lg:pt-8 pt-4">
+                    <p className="text-slate-500 ubuntu-regular text-sm md:text-base lg:text-md tracking-tight text-center md:text-left">
                         © 2026–2027 | All rights reserved by Webmavericks Softcoders Pvt. Ltd.
                     </p>
-                    <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
+                    <div className="flex flex-wrap justify-center gap-x-6 md:gap-x-8 gap-y-4">
                         {policyLinks.map((link) => (
-                            <a key={link.name} href={link.href} className="relative text-slate-500 hover:text-cyan-400 ubuntu-medium text-sm tracking-widest transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-300 after:bg-cyan-400">
+                            <a key={link.name} href={link.href} className="relative text-slate-500 hover:text-cyan-400 ubuntu-medium text-xs md:text-sm tracking-widest transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-300 after:bg-cyan-400">
                                 {link.name}
                             </a>
                         ))}

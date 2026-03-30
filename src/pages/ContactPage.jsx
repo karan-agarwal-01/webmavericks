@@ -126,7 +126,7 @@ const ContactPage = () => {
                     <form 
                         ref={formRef} 
                         onSubmit={handleSubmit} 
-                        className="w-full bg-white/30 backdrop-blur-2xl border border-white/60 p-8 md:p-10 rounded-lg shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] flex flex-col gap-6 relative overflow-hidden group"
+                        className="w-full bg-white/30 backdrop-blur-2xl border border-white/60 p-4 md:p-10 rounded-lg shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] flex flex-col gap-6 relative overflow-hidden group"
                     >
                         <div className="absolute -top-32 -right-32 w-64 h-64 bg-cyan-400/20 blur-[60px] rounded-full pointer-events-none transition-transform duration-700 group-hover:scale-150"></div>
                         <div className="flex flex-col gap-6">

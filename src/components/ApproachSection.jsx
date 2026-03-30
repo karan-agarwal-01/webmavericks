@@ -109,24 +109,23 @@ const ApproachSection = () => {
 
       <div className="flex flex-col lg:flex-row gap-12 mb-12 relative z-10">
         <div className="lg:w-1/2">
-          <h2 className="split-heading text-5xl md:text-6xl lg:text-7xl ubuntu-bold text-cyan-400 tracking-tight">
-            Our Approach
+          <h2 className="split-heading text-4xl md:text-5xl lg:text-6xl ubuntu-bold text-cyan-400 tracking-tight">
+            How we build digital excellence
           </h2>
         </div>
 
         <div className="lg:w-1/2 flex flex-col gap-6 text-[#90a1b9]">
-          <p className="fade-text text-lg leading-relaxed">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni commodi, modi eligendi provident iure ut explicabo officia placeat deleniti consectetur repellat, reprehenderit dignissimos quaerat blanditiis unde? Illo quod neque praesentium.
+          <p className="fade-text text-sm md:text-lg leading-relaxed">
+            At Webmavericks Softcoders, our approach is simple—understand deeply, build thoughtfully, and deliver with precision. We believe that great digital products come from clear strategy, strong collaboration, and attention to every detail.
           </p>
 
-          <p className="fade-text text-lg leading-relaxed">
-            Our team focuses on innovation, performance, and scalability to help
-            businesses grow in the modern digital landscape.
+          <p className="fade-text text-sm md:text-lg leading-relaxed">
+            We combine modern technologies with user-focused design to create solutions that are fast, scalable, and built for real-world performance. Every product we build is designed to grow with your business.
           </p>
         </div>
       </div>
 
-      <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+      <div className="relative grid grid-cols-1 lg:grid-cols-3 lg:gap-10 md:gap-20 gap-24 items-center">
         <div className="float-img">
           <div className="rounded-xl overflow-hidden shadow-2xl -rotate-6">
             <img
@@ -136,16 +135,16 @@ const ApproachSection = () => {
             />
           </div>
         </div>
-        <div className="parallax-container">
-          <div className="overflow-hidden shadow-2xl h-120">
+        <div className="parallax-container lg:mt-0 md:mt-10">
+          <div className="overflow-hidden shadow-2xl lg:h-120 md:h-90 md:w-full">
             <img
               src={parallaxImg}
-              className="parallax-img w-120 h-[120%] object-cover"
+              className="parallax-img lg:w-120 md:w-full lg:h-120 md-h-90 object-cover"
               data-cursor='light'
             />
           </div>
         </div>
-        <div className="float-img">
+        <div className="float-img lg:mt-0 md:mt-0 -mt-20">
           <div className="rounded-xl overflow-hidden shadow-2xl rotate-6">
             <img
               src={rightImg}

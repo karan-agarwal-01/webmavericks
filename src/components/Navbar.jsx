@@ -156,35 +156,51 @@ const Navbar = () => {
     const handleLinkEnter = (e) => {
         const text = e.currentTarget.querySelector('.nav-link-text');
         const icon = e.currentTarget.querySelector('.nav-link-icon');
-        
-        gsap.to(text, { x: 15, letterSpacing: "4px", color: "#22d3ee", duration: 0.5, ease: "expo.out" });
+        const chars = e.currentTarget.querySelectorAll('.char');
+
         gsap.to(icon, { x: 10, color: "#22d3ee", scale: 1.1, duration: 0.5, ease: "expo.out" });
+        gsap.to(text, { x: 15, color: "#22d3ee", duration: 0.5, ease: "expo.out" });
+
+        if (chars.length > 0) {
+            gsap.to(chars, { 
+                x: (index) => index * 2.5,
+                duration: 0.5, 
+                ease: "expo.out" 
+            });
+        } else {
+            gsap.to(textContainer, { x: 10, duration: 0.5, ease: "expo.out" });
+        }
     };
     const handleLinkLeave = (e) => {
         const text = e.currentTarget.querySelector('.nav-link-text');
         const icon = e.currentTarget.querySelector('.nav-link-icon');
+        const chars = e.currentTarget.querySelectorAll('.char');
         
-        gsap.to(text, { x: 0, letterSpacing: "normal", color: "#e2e8f0", duration: 0.5, ease: "expo.out" });
         gsap.to(icon, { x: 0, color: "#ffffff", scale: 1, duration: 0.5, ease: "expo.out" });
+        gsap.to(text, { color: "#e2e8f0", duration: 0.5, ease: "expo.out" });
+
+        if (chars.length > 0) {
+            gsap.to(chars, { x: 0, duration: 0.5, ease: "expo.out" });
+        } else {
+            gsap.to(textContainer, { x: 0, duration: 0.5, ease: "expo.out" });
+        }
     };
 
     return (
         <>
             <header ref={headerRef} className="fixed top-0 left-0 w-full z-100 px-6 md:px-12 lg:px-12 pt-8 pb-4 flex justify-between items-center pointer-events-none mix-blend-difference text-white">
                 <div className="pointer-events-auto cursor-pointer group" data-cursor-interactive>
-                    <h1 className="text-xl md:text-2xl block md:hidden ubuntu-bold tracking-tighter transition-transform duration-500 group-hover:scale-105 origin-left">
-                        Webmavericks
-                    </h1>
+                    <h1 className="text-xl md:text-2xl block md:hidden ubuntu-bold tracking-tighter transition-transform duration-500 group-hover:scale-105 origin-left"></h1>
                 </div>
                 <button 
                     onClick={() => setIsOpen(true)}
-                    className="pointer-events-auto flex items-center gap-4 group focus:outline-none cursor-pointer" 
+                    className="pointer-events-auto flex items-center lg:gap-4 md:gap-3 gap-2 group focus:outline-none cursor-pointer" 
                     onMouseEnter={handleMenuEnter} 
                     onMouseLeave={handleMenuLeave} 
                     data-cursor-interactive 
                     aria-label="Open Menu"
                 >
-                    <span className="hidden sm:block text-sm md:text-xl ubuntu-medium tracking-widest uppercase transition-transform duration-300 group-hover:-translate-x-1">Menu</span>
+                    <span className="text-lg md:text-xl ubuntu-medium tracking-widest uppercase transition-transform duration-300 group-hover:-translate-x-1">Menu</span>
                     <div ref={menuIconRef} className="grid grid-cols-3 gap-1 w-6 h-6 items-center justify-center origin-center p-0.5 rounded-sm transition-colors duration-300">
                         {[...Array(9)].map((_, index) => (
                             <div 
@@ -207,16 +223,18 @@ const Navbar = () => {
                     <FiX size={32} className="text-white" />
                 </button>
 
-                <div className="flex w-full h-full flex-col lg:flex-row">                    
-                    <div className="hidden lg:flex flex-col justify-between w-1/4 p-12 border-r border-gray-500/50 relative z-10">
+                <div className="flex w-full h-full flex-col lg:flex-row overflow-y-auto lg:overflow-hidden pt-24 lg:pt-0">                    
+                    
+                    <div className="hidden md:flex flex-col gap-10 lg:gap-0 justify-between w-full lg:w-1/4 p-8 md:p-12 border-t lg:border-t-0 lg:border-r border-gray-500/50 relative z-10 order-2 lg:order-1">
                         <div className="overflow-hidden pb-2">
-                            <h2 className="split-text text-2xl ubuntu-bold tracking-tighter">Webmavericks Softcoders Pvt Ltd.</h2>
+                            <h2 className="split-text text-2xl md:text-3xl lg:text-2xl ubuntu-bold tracking-tighter">Webmavericks Softcoders Pvt Ltd.</h2>
                         </div>
                         
                         <div className="flex flex-col gap-4">
                             <div className="overflow-hidden pb-1">
                                 <h4 className="split-text text-lg ubuntu-bold mb-2">Follow Us</h4>
                             </div>
+                            <div className="flex lg:flex-col justify-between gap-4">
                             {
                             socialLinks.map((social, index) => (
                                 <div key={index} className="overflow-hidden pb-1">
@@ -225,27 +243,28 @@ const Navbar = () => {
                                         className="text-slate-400 hover:text-cyan-400 ubuntu-medium transition-colors relative after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-500 after:bg-cyan-400 w-max flex gap-3 items-center"
                                     >
                                         <div className="shrink-0 flex items-center justify-center split-text">
-                                            <social.icon className="w-4.5 h-4.5" />
+                                            <social.icon className="w-8 h-8 lg:w-4.5 lg:h-4.5" />
                                         </div>
                                         
-                                        <div className="split-text">
+                                        <div className="split-text md:text-xl">
                                             {social.name}
                                         </div>
                                     </a>
                                 </div>
                             ))
-                        }
+                            }
+                            </div>
                         </div>
 
-                        <div className="overflow-hidden pt-4 pb-4 cursor-pointer" data-cursor-interactive>
-                            <h3 ref={ctaRef} className="text-5xl ubuntu-bold text-cyan-400 inline-block hover:text-cyan-300 transition-colors duration-500">
+                        <div className="overflow-hidden pt-4 pb-4 cursor-pointer text-center" data-cursor-interactive>
+                            <h3 ref={ctaRef} className="text-4xl md:text-5xl ubuntu-bold text-cyan-400 inline-block hover:text-cyan-300 transition-colors duration-500">
                                 Let's talk
                             </h3>
                         </div>
                     </div>
 
-                    <div className="flex flex-col justify-center items-center w-full max-w-xl h-full z-20">
-                        <nav className="flex flex-col gap-8 w-full justify-center items-start ml-50">
+                    <div className="flex flex-col justify-center items-center w-full lg:mx-16 lg:w-full h-[70vh] lg:max-w-md lg:h-full z-20 order-1 lg:order-2 lg:py-0 pb-8">
+                        <nav className="flex flex-col gap-6 md:gap-8 w-max justify-center items-start">
                             {navLinks.map((link, idx) => (
                                 <div key={idx} className="overflow-hidden py-3">
                                     <a 
@@ -254,12 +273,12 @@ const Navbar = () => {
                                         onMouseEnter={handleLinkEnter}
                                         onMouseLeave={handleLinkLeave}
                                         data-cursor-interactive
-                                        className="group flex gap-5 items-center w-max pr-16 text-white"
+                                        className="group flex gap-4 md:gap-5 items-center w-max pr-8 md:pr-16 text-white"
                                     >
                                         <div className="nav-link-icon shrink-0 text-white">
-                                            <link.icon className="w-10 h-10" />
+                                            <link.icon className="w-8 h-8 md:w-10 md:h-10" />
                                         </div>
-                                        <span className="nav-link-text block text-4xl  ubuntu-bold text-slate-200 tracking-tighter">
+                                        <span className="nav-link-text block text-3xl md:text-4xl ubuntu-bold text-slate-200 tracking-tighter">
                                             {link.name}
                                         </span>
                                     </a>
@@ -268,7 +287,7 @@ const Navbar = () => {
                         </nav>
                     </div>
 
-                    <div className="hidden lg:flex flex-col justify-center w-1/4 p-12 border-l border-gray-500/50 relative overflow-hidden">
+                    <div className="hidden lg:flex flex-col justify-center w-full lg:w-1/4 p-8 md:p-12 border-t lg:border-t-0 lg:border-l border-gray-500/50 relative overflow-hidden order-3">
                         <div className="relative z-10">
                             <div className="overflow-hidden pb-2 mb-4">
                                 <h3 className="split-text text-3xl ubuntu-bold">Get in touch</h3>
@@ -282,7 +301,7 @@ const Navbar = () => {
                                     <a href="mailto:info@nilanktechnologies.com" className="split-text block text-lg hover:text-cyan-400 transition-colors wrap-break-word w-max relative after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-500 after:bg-cyan-400">abc@gmail.com</a>
                                 </div>
                                 <div className="overflow-hidden">
-                                    <p className="split-text leading-relaxed text-slate-400 max-w-62.5 mt-4">
+                                    <p className="split-text leading-relaxed text-slate-400 max-w-sm lg:max-w-62.5 mt-4">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, qui nulla pariatur earum dolorem
                                     </p>
                                 </div>

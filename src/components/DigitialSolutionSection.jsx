@@ -2,23 +2,26 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { GoArrowUpRight } from "react-icons/go";
+import pic1 from "../assets/images/protect your investment, and grow your business with confidence_.jpg"
+import pic2 from "../assets/images/Gradient ui ux elements background _ Free Vector.jpg"
+import pic3 from "../assets/images/Programming coding background.jpg"
 
 
 const showcaseData = [
     {
-        title: "Strategy & Consulting",
-        subtitle: "Mapping the digital future.",
-        img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80",
+        title: "Product Strategy",
+        subtitle: "Planning scalable and future-ready digital solutions.",
+        img: pic1,
     },
     {
-        title: "Experience Design",
-        subtitle: "Crafting intuitive interfaces.",
-        img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1000&q=80",
+        title: "UI/UX Engineering",
+        subtitle: "Designing clean, intuitive, and user-focused interfaces.",
+        img: pic2,
     },
     {
-        title: "Engineering",
-        subtitle: "Building robust architectures.",
-        img: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1000&q=80",
+        title: "Full Stack Development",
+        subtitle: "Building secure, scalable, and high-performance applications.",
+        img: pic3,
     }
 ];
 
@@ -33,11 +36,11 @@ const DigitalSolutionEditorial = () => {
             const heading = document.querySelector(".editorial-heading");
             const text = document.querySelector(".editorial-text");
             
-            const splitHeading = new SplitType(heading, { types: "lines, words" });
+            const splitHeading = new SplitType(heading, { types: "words, chars" });
             const splitText = new SplitType(text, { types: "lines" });
             splits.push(splitHeading, splitText);
 
-            [...splitHeading.lines, ...splitText.lines].forEach(line => {
+            splitText.lines.forEach(line => {
                 const wrapper = document.createElement('div');
                 wrapper.classList.add('overflow-hidden');
                 line.parentNode.insertBefore(wrapper, line);
@@ -47,7 +50,7 @@ const DigitalSolutionEditorial = () => {
             gsap.fromTo(splitHeading.words,
                 { y: 100, skewY: 10, opacity: 0 },
                 {
-                    y: 0, skewY: 0, opacity: 1, duration: 1.2, stagger: 0.05, ease: "expo.out",
+                    y: 0, skewY: 0, opacity: 1, duration: 1.2, stagger: 0.02, ease: "expo.out",
                     scrollTrigger: { trigger: sectionRef.current, start: "top 70%" }
                 }
             );
@@ -99,12 +102,12 @@ const DigitalSolutionEditorial = () => {
 
     return (
         <section ref={sectionRef} className="relative w-full bg-[#f8fafc] text-slate-900">
-            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row px-6 md:px-8 relative">
-                <div ref={leftColumnRef}className="w-full lg:w-1/2 h-auto lg:h-screen lg:sticky top-0 flex flex-col justify-center pb-12 -mt-10 lg:py-0 pr-0 lg:pr-12 z-20"
+            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row px-6 md:px-8 relative pb-4 lg:pb-0">
+                <div ref={leftColumnRef}className="w-full lg:w-1/2 h-auto lg:h-screen lg:sticky top-0 flex flex-col justify-center pb-12 lg:-mt-10 py-4 lg:py-0 pr-0 lg:pr-12 z-20"
                 >
-                    <div className="max-w-lg">
-                        <h2 className="editorial-heading text-[4.5rem] md:text-[6rem] lg:text-8xl leading-[0.95] ubuntu-bold text-slate-950 tracking-tighter mb-10">
-                            Digital <br /> Solution
+                    <div className="lg:max-w-lg w-full">
+                        <h2 className="editorial-heading text-4xl md:text-7xl lg:text-6xl leading-[0.95] ubuntu-bold text-slate-950 tracking-tighter lg:mb-10 md:mb-6 mb-4">
+                            Building Scalable Digital Products
                         </h2>
                         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                             <div className="flex items-center shrink-0 mt-2 sm:mt-0">
@@ -115,7 +118,7 @@ const DigitalSolutionEditorial = () => {
                             </div>
 
                             <p className="editorial-text text-lg text-slate-600 ubuntu-medium leading-relaxed">
-                                We're designing digital experiences that enrich human lives and it helps to grow your business globally trends.
+                            We design and develop reliable digital solutions by combining modern technologies, clean architecture, and user-focused design—helping businesses build, scale, and succeed in the digital world.
                             </p>
                         </div>
                         <div className="hidden lg:flex items-center gap-4 mt-20 opacity-50">
@@ -127,13 +130,13 @@ const DigitalSolutionEditorial = () => {
                     </div>
                 </div>
 
-                <div className="w-full lg:w-1/2 flex flex-col gap-16 lg:gap-8 pb-4 lg:py-[10vh] relative z-10">
+                <div className="w-full lg:w-1/2 flex flex-col gap-8 pb-4 lg:py-[10vh] relative z-10">
                     {showcaseData.map((item, index) => (
                         <div 
                             key={index} 
                             className="showcase-card group relative w-full flex flex-col cursor-pointer"
                         >
-                            <div className="relative w-full h-[60vh] lg:h-[70vh] rounded-[2rem] overflow-hidden shadow-2xl mb-6 bg-slate-200">
+                            <div className="relative w-full h-[40vh] md:h-[60vh] lg:h-[70vh] rounded-[2rem] overflow-hidden shadow-2xl mb-6 bg-slate-200">
                                 <img 
                                     data-cursor="light"
                                     src={item.img} 
@@ -144,10 +147,10 @@ const DigitalSolutionEditorial = () => {
                             </div>
                             <div className="card-content flex justify-between items-start px-2">
                                 <div>
-                                    <h3 className="text-3xl lg:text-4xl ubuntu-bold text-slate-950 tracking-tight transition-colors duration-300 group-hover:text-cyan-400">
+                                    <h3 className="text-2xl md:text-3xl lg:text-4xl ubuntu-bold text-slate-950 tracking-tight transition-colors duration-300 group-hover:text-cyan-400">
                                         {item.title}
                                     </h3>
-                                    <p className="text-slate-500 ubuntu-medium text-lg mt-2">
+                                    <p className="text-slate-500 ubuntu-medium text-md md:text-lg mt-2">
                                         {item.subtitle}
                                     </p>
                                 </div>
