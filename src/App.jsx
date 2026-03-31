@@ -14,13 +14,9 @@ import AnimatedPortfolio from './pages/PortfolioPage';
 
 export default function App() {
 
-  const [isLoading, setIsLoading] = useState(true);
-
   return (
-    <>
-    {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
     <BrowserRouter>
-      <SmoothScrolling isLoading={isLoading}>
+      <SmoothScrolling >
         <CustomCursor />
         <Navbar />
         <Routes>
@@ -33,6 +29,5 @@ export default function App() {
         <FooterSection />
       </SmoothScrolling>
     </BrowserRouter>
-    </>
   );
 }

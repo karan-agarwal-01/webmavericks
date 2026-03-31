@@ -7,7 +7,7 @@ import "lenis/dist/lenis.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SmoothScrolling = ({ children, isLoading }) => {
+const SmoothScrolling = ({ children }) => {
     const lenisRef = useRef(null);
     const { pathname } = useLocation();
 
@@ -33,16 +33,6 @@ const SmoothScrolling = ({ children, isLoading }) => {
             gsap.ticker.remove(update);
         };
     }, []);
-
-    useEffect(() => {
-        if (!lenisRef.current) return;
-
-        if (isLoading) {
-            lenisRef.current.stop();
-        } else {
-            lenisRef.current.start();
-        }
-    }, [isLoading]);
 
     useEffect(() => {
         if (!lenisRef.current) return;
