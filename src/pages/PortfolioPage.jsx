@@ -199,7 +199,7 @@ export default function CombinedPortfolio() {
                       </span>
                     ))}
                   </div>
-                  <h2 className="project-title text-4xl md:text-6xl lg:text-8xl ubuntu-bold tracking-tighter leading-tight italic">
+                  <h2 className="project-title text-4xl md:text-6xl lg:text-7xl ubuntu-bold tracking-tighter leading-tight italic">
                     {proj.title}
                   </h2>
                   <p className="text-sm md:text-lg lg:text-xl text-zinc-400 ubuntu-light leading-relaxed max-w-lg">
