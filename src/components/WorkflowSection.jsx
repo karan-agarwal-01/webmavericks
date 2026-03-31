@@ -127,14 +127,14 @@ const WorkflowSection = () => {
                                         </div>
                                     </div>
                                     <div className="bg-white rounded-2xl lg:p-9 md:p-8 p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex-1 relative overflow-hidden">
-                                        <div className="absolute -top-6 -right-4 text-9xl font-bold text-slate-50/80 z-0 select-none group-hover:text-cyan-100 transition-colors duration-500">
+                                        <div className="absolute -top-6 -right-4 text-9xl ubuntu-bold text-slate-50/80 z-0 select-none group-hover:text-cyan-100 transition-colors duration-500">
                                             {step.id}
                                         </div>
                                         <div className="relative z-10">
                                             <p className="block lg:hidden ubuntu-medium text-cyan-500 mb-2 text-sm uppercase tracking-wider">
                                                 Step {step.id}
                                             </p>
-                                            <h3 className="text-md md:text-lg font-semibold text-slate-800 mb-4 group-hover:text-slate-950 transition-colors duration-300">
+                                            <h3 className="text-md md:text-lg ubuntu-medium text-slate-800 mb-4 group-hover:text-slate-950 transition-colors duration-300">
                                                 {step.title}
                                             </h3>
                                             <p className="text-slate-600 text-sm leading-relaxed ubuntu-regular">

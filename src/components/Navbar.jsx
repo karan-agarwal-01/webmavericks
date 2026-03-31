@@ -1,28 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { FiX } from "react-icons/fi";
+import { FiMail, FiPhone, FiX } from "react-icons/fi";
 import SplitType from "split-type";
 import { 
     FiHome, 
     FiUsers, 
     FiLayers, 
     FiPhoneCall, 
-    FiFacebook,
     FiLinkedin,
-    FiInstagram 
 } from "react-icons/fi";
+import { GoLocation, GoProjectSymlink } from "react-icons/go";
 
 const navLinks = [
     { name: "Home", icon: FiHome, href: "/" },
     { name: "About Us", icon: FiUsers, href: "/about" },
     { name: "Services", icon: FiLayers, href: "/services" },
     { name: "Contact us", icon: FiPhoneCall, href: "/contact" },
+    { name: "Portfolio", icon: GoProjectSymlink, href: "/portfolio" },
 ];
 
 const socialLinks = [
-    { name: "Facebook", icon: FiFacebook, href: "#" },
-    { name: "LinkedIn", icon: FiLinkedin, href: "#" },
-    { name: "Instagram", icon: FiInstagram, href: "#" },
+    { name: "LinkedIn", icon: FiLinkedin, href: "https://www.linkedin.com/in/pramod-kumar-519ab5a0/" },
 ];
 
 const Navbar = () => {
@@ -240,7 +238,7 @@ const Navbar = () => {
                                 <div key={index} className="overflow-hidden pb-1">
                                     <a 
                                         href={social.href} 
-                                        className="text-slate-400 hover:text-cyan-400 ubuntu-medium transition-colors relative after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-500 after:bg-cyan-400 w-max flex gap-3 items-center"
+                                        className="text-slate-300 hover:text-cyan-400 ubuntu-medium transition-colors relative after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-500 after:bg-cyan-400 w-max flex gap-3 items-center"
                                     >
                                         <div className="shrink-0 flex items-center justify-center split-text">
                                             <social.icon className="w-8 h-8 lg:w-4.5 lg:h-4.5" />
@@ -256,15 +254,17 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        <div className="overflow-hidden pt-4 pb-4 cursor-pointer text-center" data-cursor-interactive>
-                            <h3 ref={ctaRef} className="text-4xl md:text-5xl ubuntu-bold text-cyan-400 inline-block hover:text-cyan-300 transition-colors duration-500">
-                                Let's talk
-                            </h3>
-                        </div>
+                        <a href="/contact">
+                            <div className="overflow-hidden pt-4 pb-4 cursor-pointer text-center" data-cursor-interactive>
+                                <h3 ref={ctaRef} className="text-4xl md:text-5xl ubuntu-bold text-cyan-400 inline-block hover:text-cyan-300 transition-colors duration-500">
+                                    Let's talk
+                                </h3>
+                            </div>
+                        </a>    
                     </div>
 
                     <div className="flex flex-col justify-center items-center w-full lg:mx-16 lg:w-full h-[70vh] lg:max-w-md lg:h-full z-20 order-1 lg:order-2 lg:py-0 pb-8">
-                        <nav className="flex flex-col gap-6 md:gap-8 w-max justify-center items-start">
+                        <nav className="flex flex-col gap-6 w-max justify-center items-start">
                             {navLinks.map((link, idx) => (
                                 <div key={idx} className="overflow-hidden py-3">
                                     <a 
@@ -287,22 +287,25 @@ const Navbar = () => {
                         </nav>
                     </div>
 
-                    <div className="hidden lg:flex flex-col justify-center w-full lg:w-1/4 p-8 md:p-12 border-t lg:border-t-0 lg:border-l border-gray-500/50 relative overflow-hidden order-3">
+                    <div className="hidden lg:flex flex-col justify-center w-full lg:w-1/4 p-8 md:p-4 border-t lg:border-t-0 lg:border-l border-gray-500/50 relative overflow-hidden order-3">
                         <div className="relative z-10">
                             <div className="overflow-hidden pb-2 mb-4">
                                 <h3 className="split-text text-3xl ubuntu-bold">Get in touch</h3>
                             </div>
                             
-                            <div className="flex flex-col gap-6 text-slate-300 ubuntu-regular">
-                                <div className="overflow-hidden">
-                                    <a href="tel:+918810383605" className="split-text block text-xl hover:text-cyan-400 transition-colors w-max relative after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-500 after:bg-cyan-400">+91 987654321</a>
+                            <div className="flex flex-col gap-3 text-slate-300 ubuntu-regular">
+                                <div className="overflow-hidden split-text text-md hover:text-cyan-400 transition-colors w-max relative after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-500 after:bg-cyan-400 flex items-center">
+                                    <FiPhone />
+                                    <a href="tel:+918209838237" className="ml-2 mt-1">8209838237</a>
                                 </div>
-                                <div className="overflow-hidden">
-                                    <a href="mailto:info@nilanktechnologies.com" className="split-text block text-lg hover:text-cyan-400 transition-colors wrap-break-word w-max relative after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-500 after:bg-cyan-400">abc@gmail.com</a>
+                                <div className="overflow-hidden split-text text-md hover:text-cyan-400 transition-colors w-max relative after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-500 after:bg-cyan-400 flex items-center">
+                                    <FiMail />
+                                    <a href="mailto:Pramod@Webmavericks.org" className="ml-2 mt-1">Pramod@Webmavericks.org</a>
                                 </div>
-                                <div className="overflow-hidden">
-                                    <p className="split-text leading-relaxed text-slate-400 max-w-sm lg:max-w-62.5 mt-4">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, qui nulla pariatur earum dolorem
+                                <div className="overflow-hidden flex items-center hover:text-cyan-400">
+                                    <GoLocation />
+                                    <p className="split-text leading-relaxed ubuntu-medium max-w-sm lg:max-w-62.5 mt-4 ml-2">
+                                        94, Friends Col, Panchawala, Jaipur, 302034
                                     </p>
                                 </div>
                             </div>

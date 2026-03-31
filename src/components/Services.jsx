@@ -6,6 +6,7 @@ import webPic from "../assets/images/Custom Website Development Services.jpg";
 import appPic from "../assets/images/What Are the Benefits of React Native App Development in Egypt_.jpg";
 import uiPic from "../assets/images/UI_UX Difference.jpg";
 import backPic from "../assets/images/Custom Education & Training Systems with Python Development.jpg";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const servicesData = [
     {
@@ -41,6 +42,7 @@ const ServicesSection = () => {
     const imgRef = useRef(null);
 
     const [activeService, setActiveService] = useState(servicesData[0]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         let ctx = gsap.context(() => {
@@ -119,7 +121,7 @@ const ServicesSection = () => {
                         </p>
                     </div>
                     <div className="hidden w-full lg:w-auto md:flex justify-center md:justify-end">
-                        <CircleButton text="View all services" theme="dark" />
+                        <CircleButton text="View all services" theme="dark" onClick={() => navigate('/services')} />
                     </div>
                 </div>
 
@@ -147,10 +149,10 @@ const ServicesSection = () => {
                             >
                                 <div className="flex flex-col lg:flex-row gap-4 md:gap-4 items-start py-4 md:py-5 lg:py-6 px-2 md:px-3 lg:px-4 transition-all duration-300 rounded-2xl hover:bg-slate-900/30">
                                     <div className="flex items-center gap-4 md:gap-6 w-full lg:w-5/12">
-                                        <span className="text-xl font-medium text-slate-500 group-hover:text-cyan-400 transition-colors duration-300">
+                                        <span className="text-xl ubuntu-medium text-slate-500 group-hover:text-cyan-400 transition-colors duration-300">
                                             {service.id}
                                         </span>
-                                        <h3 className="text-xl md:text-2xl font-semibold text-slate-300 group-hover:text-slate-50 transition-colors duration-300">
+                                        <h3 className="text-xl md:text-2xl ubuntu-medium text-slate-300 group-hover:text-slate-50 transition-colors duration-300">
                                             {service.title}
                                         </h3>
                                     </div>
@@ -175,7 +177,7 @@ const ServicesSection = () => {
                         ))}
                     </div>
                     <div className="md:hidden w-full lg:w-auto flex justify-center md:justify-end">
-                        <CircleButton text="View all services" theme="dark" />
+                        <CircleButton text="View all services" theme="dark" onClick={() => navigate('/services')} />
                     </div>
                 </div>
             </div>

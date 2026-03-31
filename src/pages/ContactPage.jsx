@@ -95,7 +95,7 @@ const ContactPage = () => {
                             </div>
                             <div>
                                 <p className="text-slate-500 ubuntu-medium text-sm mb-1 uppercase tracking-wider">Email Us</p>
-                                <p className="text-xl ubuntu-bold text-slate-900 group-hover:text-cyan-400 transition-colors duration-300">abc@gmail.com</p>
+                                <p className="text-xl ubuntu-bold text-slate-900 group-hover:text-cyan-400 transition-colors duration-300">Pramod@Webmavericks.org</p>
                             </div>
                         </div>
 
@@ -105,7 +105,7 @@ const ContactPage = () => {
                             </div>
                             <div>
                                 <p className="text-slate-500 ubuntu-medium text-sm mb-1 uppercase tracking-wider">Call Us</p>
-                                <p className="text-xl ubuntu-bold text-slate-900 group-hover:text-cyan-400 transition-colors duration-300">+91 98765 43210</p>
+                                <p className="text-xl ubuntu-bold text-slate-900 group-hover:text-cyan-400 transition-colors duration-300">8209838237</p>
                             </div>
                         </div>
 
@@ -116,7 +116,7 @@ const ContactPage = () => {
                             <div>
                                 <p className="text-slate-500 ubuntu-medium text-sm mb-1 uppercase tracking-wider">Visit Us</p>
                                 <p className="text-lg ubuntu-bold text-slate-900 group-hover:text-cyan-400 transition-colors duration-300 max-w-62.5 leading-tight">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    94, Friends Col, Panchawala, Jaipur, 302034
                                 </p>
                             </div>
                         </div>

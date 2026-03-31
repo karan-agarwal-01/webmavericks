@@ -5,10 +5,10 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const statsData = [
-    { id: 1, target: 500, suffix: "+", label: "Projects Delivered" },
-    { id: 2, target: 100, suffix: "+", label: "Happy Clients" },
-    { id: 3, target: 6, suffix: "", label: "Years of Experience" },
-    { id: 4, target: 50, suffix: "+", label: "Team Members" },
+    { id: 1, target: 150, suffix: "+", label: "Projects Delivered" },
+    { id: 2, target: 40, suffix: "+", label: "Happy Clients" },
+    { id: 3, target: 11, suffix: "+", label: "Years of Experience" },
+    { id: 4, target: 25, suffix: "", label: "Team Members" },
 ];
 
 const StatsSection = () => {
@@ -83,14 +83,14 @@ const StatsSection = () => {
                                 hover:border-cyan-400 hover:shadow-xl hover:z-50 hover:-translate-y-2
                             `}
                         >
-                            <h3 className="text-6xl font-semibold text-slate-800 tracking-tighter flex items-center justify-center mb-2 transition-colors duration-300 group-hover:text-slate-950">
+                            <h3 className="text-6xl ubuntu-medium text-slate-800 tracking-tighter flex items-center justify-center mb-2 transition-colors duration-300 group-hover:text-slate-950">
                                 <span ref={(el) => (numRefs.current[index] = el)}>
                                     0
                                 </span>
                                 <span>{stat.suffix}</span>
                             </h3>
                             
-                            <p className="text-slate-600 font-medium text-lg w-3/4 leading-snug group-hover:text-cyan-700 transition-colors duration-300">
+                            <p className="text-slate-600 ubuntu-medium text-lg w-3/4 leading-snug group-hover:text-cyan-700 transition-colors duration-300">
                                 {stat.label}
                             </p>
                         </div>

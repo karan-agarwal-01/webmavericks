@@ -99,7 +99,7 @@ const FaqSection = () => {
                                             <span className={`text-lg md:text-xl mt-1 ubuntu-medium transition-colors duration-300 ${isOpen ? 'text-cyan-400' : 'text-slate-600 group-hover:text-cyan-400'}`}>
                                                 {faq.id}
                                             </span>
-                                            <h3 className={`text-md md:text-2xl font-semibold transition-colors duration-300 ${isOpen ? 'text-slate-50' : 'text-slate-300 group-hover:text-cyan-50'}`}>
+                                            <h3 className={`text-md md:text-2xl ubuntu-semibold transition-colors duration-300 ${isOpen ? 'text-slate-50' : 'text-slate-300 group-hover:text-cyan-50'}`}>
                                                 {faq.question}
                                             </h3>
                                         </div>

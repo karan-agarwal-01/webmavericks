@@ -3,12 +3,15 @@ import gsap from "gsap";
 import SplitType from "split-type";
 import CircleButton from "./CircleButton";
 import CrossBlocks from "./Crossblocks";
+import { useNavigate } from "react-router-dom";
 
 const AboutSection = ({ text1, text2, para1, para2, img1, img2 }) => {
     const sectionRef = useRef(null);
     const headingRef = useRef(null);
     const leftImgRef = useRef(null);
     const rightImgWrapperRef = useRef(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         let ctx = gsap.context(() => {
@@ -63,13 +66,8 @@ const AboutSection = ({ text1, text2, para1, para2, img1, img2 }) => {
     }, []);
 
     return (
-        <section
-            data-cursor="dark"
-            ref={sectionRef}
-            className="py-8 px-6 md:px-12 lg:px-12 bg-[#f8fafc] text-slate-900 overflow-hidden relative"
-        >
+        <section data-cursor="dark" ref={sectionRef} className="py-8 px-6 md:px-12 lg:px-12 bg-[#f8fafc] text-slate-900 overflow-hidden relative">
             <div className="max-w-7xl mx-auto">
-
                 <div className="flex items-center justify-center lg:justify-start mb-4 md:mb-8 lg:mb-12 relative z-20">
                     <h2
                         ref={headingRef}
@@ -105,7 +103,7 @@ const AboutSection = ({ text1, text2, para1, para2, img1, img2 }) => {
                         </div>
                         
                         <div className="flex flex-col sm:flex-row items-center sm:items-start lg:justify-between md:justify-center gap-10 lg:gap-0">
-                            <CircleButton text={"Explore us"} />
+                            <CircleButton text={"Explore us"} onClick={() => navigate('/about')} />
                             <div className="pointer-events-none scale-90 sm:scale-100">
                                <CrossBlocks />
                             </div>

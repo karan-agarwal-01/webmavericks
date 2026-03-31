@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
-import CircleButton from "./CircleButton";
 
 const teamData = [
   {

@@ -199,7 +199,7 @@ const HeroSection = () => {
                 <div ref={text2Ref} className="ubuntu-medium text-left md:text-right w-full md:w-auto">
                     <div className="overflow-hidden mb-1 lg:pb-2 pb-1">
                         <h2 className="lg:text-6xl md:text-5xl text-4xl ubuntu-bold text-transparent bg-clip-text bg-linear-to-r from-slate-300 to-blue-400">
-                            500+
+                            150+
                         </h2>
                     </div>
                     <div className="overflow-hidden">

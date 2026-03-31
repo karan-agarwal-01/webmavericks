@@ -136,7 +136,7 @@ const DigitalSolutionEditorial = () => {
                             key={index} 
                             className="showcase-card group relative w-full flex flex-col cursor-pointer"
                         >
-                            <div className="relative w-full h-[40vh] md:h-[60vh] lg:h-[70vh] rounded-[2rem] overflow-hidden shadow-2xl mb-6 bg-slate-200">
+                            <div data-cursor="light" className="relative w-full h-[40vh] md:h-[60vh] lg:h-[70vh] rounded-[2rem] overflow-hidden shadow-2xl mb-6 bg-slate-200">
                                 <img 
                                     data-cursor="light"
                                     src={item.img} 
@@ -163,12 +163,6 @@ const DigitalSolutionEditorial = () => {
                 </div>
 
             </div>
-            <style jsx>{`
-                @keyframes scrollDown {
-                    0% { transform: translateY(-100%); }
-                    100% { transform: translateY(100%); }
-                }
-            `}</style>
         </section>
     );
 };

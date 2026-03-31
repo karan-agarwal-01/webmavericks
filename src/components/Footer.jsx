@@ -1,19 +1,11 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
-import { FiFacebook, FiLinkedin, FiInstagram } from "react-icons/fi";
+import { FiFacebook, FiLinkedin, FiInstagram, FiPhone } from "react-icons/fi";
+import { GoLocation } from "react-icons/go";
 
 const socialLinks = [
-    { name: "Facebook", icon: FiFacebook, href: "#" },
-    { name: "LinkedIn", icon: FiLinkedin, href: "#" },
-    { name: "Instagram", icon: FiInstagram, href: "#" },
-];
-
-const policyLinks = [
-    { name: "REFUND POLICY", href: "#" },
-    { name: "PRIVACY POLICY", href: "#" },
-    { name: "TERM AND CONDITION", href: "#" },
-    { name: "PRICING POLICY", href: "#" },
+    { name: "LinkedIn", icon: FiLinkedin, href: "https://www.linkedin.com/in/pramod-kumar-519ab5a0/" },
 ];
 
 const FooterSection = () => {
@@ -111,7 +103,7 @@ const FooterSection = () => {
     };
 
     return (
-        <footer ref={footerRef} data-cursor="cyan" className="py-4 md:py-8 px-4 md:px-6 lg:px-10 bg-slate-900 text-slate-100 relative overflow-hidden z-40 border-t border-slate-900 ">
+        <footer ref={footerRef} data-cursor="cyan" className="py-4 md:py-4 px-4 md:px-6 lg:px-10 bg-slate-900 text-slate-100 relative overflow-hidden z-40 border-t border-slate-900 ">
             <div className="max-w-7xl mx-auto flex flex-col gap-12 md:gap-16 lg:gap-12">
                 <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
                     
@@ -125,16 +117,15 @@ const FooterSection = () => {
                             Our team is always available to answer questions, offer guidance, and provide ongoing support. We believe in collaborative partnerships that drive sustainable digital growth.
                         </p>
                     </div>
-
                     <div className="lg:col-span-3 flex flex-col lg:items-center justify-center lg:border-r border-slate-700 lg:px-12 py-8 md:py-12 lg:py-0 border-y lg:border-y-0 relative">
                         <div className="lg:hidden absolute top-0 left-0 right-0 h-px bg-slate-800"></div>
                         <div className="lg:hidden absolute bottom-0 left-0 right-0 h-px bg-slate-800"></div>
                         
                         <div className="flex flex-row lg:flex-col items-start sm:items-center lg:items-start justify-between sm:justify-around lg:justify-start lg:gap-6 md:gap-4 gap-2 w-full">
                             {socialLinks.map((link) => (
-                                <a key={link.name} href={link.href} className="social-link group flex lg:justify-center items-center gap-4 text-slate-500 ubuntu-medium text-lg sm:text-xl md:text-2xl tracking-tight transition-colors duration-300 hover:text-slate-200">
+                                <a key={link.name} href={link.href} className="social-link group flex lg:justify-center items-center gap-4 text-slate-200 ubuntu-medium text-lg sm:text-xl md:text-2xl tracking-tight transition-colors duration-300 hover:text-slate-200">
                                     <link.icon className="text-cyan-700 group-hover:text-cyan-400 transition-colors duration-300" size={20} />
-                                    <span className="ubuntu-medium text-base sm:text-lg relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-right after:scale-x-0 group-hover:after:origin-bottom-left group-hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-300 after:bg-cyan-400">
+                                    <span className="ubuntu-medium group-hover:text-cyan-400 text-base sm:text-lg relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-right after:scale-x-0 group-hover:after:origin-bottom-left group-hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-300 after:bg-cyan-400">
                                         {link.name}
                                     </span>
                                 </a>
@@ -142,7 +133,7 @@ const FooterSection = () => {
                         </div>
                     </div>
 
-                    <a href="#" onMouseEnter={handleCtaHover} onMouseLeave={handleCtaLeave} data-cursor-interactive className="lg:col-span-4 flex items-center justify-center group relative h-10 md:h-24 lg:h-full lg:pl-20 mt-8 lg:mt-0 transition-colors duration-500 rounded-2xl lg:rounded-none">
+                    <a href="/contact" onMouseEnter={handleCtaHover} onMouseLeave={handleCtaLeave} data-cursor-interactive className="lg:col-span-4 flex items-center justify-center group relative h-10 md:h-24 lg:h-full lg:pl-20 mt-8 lg:mt-0 transition-colors duration-500 rounded-2xl lg:rounded-none">
                         <div className="overflow-hidden pb-4 pt-4 px-2 sm:px-8">
                             <h2 ref={ctaRef} className="text-5xl sm:text-6xl md:text-7xl xl:text-5xl ubuntu-bold tracking-tighter text-cyan-400 inline-block transition-transform duration-700 group-hover:scale-105 whitespace-nowrap">
                                 LET'S TALK
@@ -151,16 +142,23 @@ const FooterSection = () => {
                     </a>
                 </div>
 
-                <div className="flex flex-col lg:flex-row justify-between items-center gap-4 lg:gap-8 border-t border-slate-700 lg:pt-8 pt-4">
-                    <p className="text-slate-500 ubuntu-regular text-sm md:text-base lg:text-md tracking-tight text-center md:text-left">
+                <div className="flex flex-col lg:flex-row justify-between items-center gap-2 lg:gap-8 border-t border-slate-700 pt-4">
+                    <p className="text-slate-300 ubuntu-regular text-xs md:text-sm lg:text-md tracking-tight text-center md:text-left">
                         © 2026–2027 | All rights reserved by Webmavericks Softcoders Pvt. Ltd.
                     </p>
-                    <div className="flex flex-wrap justify-center gap-x-6 md:gap-x-8 gap-y-4">
-                        {policyLinks.map((link) => (
-                            <a key={link.name} href={link.href} className="relative text-slate-500 hover:text-cyan-400 ubuntu-medium text-xs md:text-sm tracking-widest transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-300 after:bg-cyan-400">
-                                {link.name}
-                            </a>
-                        ))}
+                    <div className="flex md:gap-10 gap-3">
+                        <div className="flex gap-2 items-center">
+                            <GoLocation className="text-slate-300" />
+                            <p className="text-slate-300 ubuntu-regular text-xs md:text-sm lg:text-md tracking-tight text-center md:text-left">
+                                94, Friends Col, Panchawala, Jaipur, 302034
+                            </p>
+                        </div>
+                        <div className="flex gap-2 items-center">
+                            <FiPhone className="text-slate-300" />
+                            <p className="text-slate-300 ubuntu-regular text-xs md:text-sm lg:text-md tracking-tight text-center md:text-left">
+                                8209838237
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

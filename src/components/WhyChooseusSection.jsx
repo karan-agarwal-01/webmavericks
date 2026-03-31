@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import CircleButton from "./CircleButton";
+import { useNavigate } from "react-router-dom";
 
 const img1 = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80";
 const img2 = "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80";
@@ -9,6 +10,8 @@ const WhyChooseUs = () => {
     const containerRef = useRef(null);
     const trackRef = useRef(null);
     const counterRefs = useRef([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         let ctx = gsap.context(() => {
@@ -21,24 +24,23 @@ const WhyChooseUs = () => {
                     trigger: containerRef.current,
                     pin: true,
                     scrub: 1,
-                    end: "+=8000",
+                    end: () => "+=" + trackRef.current.scrollWidth,
                 }
             });
 
             gsap.from(".panel-2-text", {
                 x: 150,
                 opacity: 0,
-                ease: "power2.out",
+                ease: "power3.out",
                 scrollTrigger: {
                     trigger: ".panel-2",
                     containerAnimation: scrollTween,
-                    start: "left 80%",
-                    end: "center center",
-                    scrub: true,
+                    start: "left 70%",
+                    toggleActions: "play none none reverse"
                 }
             });
 
-            const targets = [500, 100, 6, 50];
+            const targets = [150, 40, 11, 25];
             counterRefs.current.forEach((el, index) => {
                 let counter = { val: 0 };
                 gsap.to(counter, {
@@ -49,7 +51,6 @@ const WhyChooseUs = () => {
                         trigger: ".panel-3",
                         containerAnimation: scrollTween,
                         start: "left 60%",
-                        toggleActions: "play none none none"
                     },
                     onUpdate: () => {
                         if (el) el.innerText = Math.ceil(counter.val);
@@ -90,7 +91,7 @@ const WhyChooseUs = () => {
 
                             <div className="flex flex-col gap-6 md:gap-8 relative lg:pl-10">
                                 <div className="flex flex-row items-start sm:items-center gap-4 sm:gap-6 relative z-10 group">
-                                    <div className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-full border-[1.5px] border-slate-900 flex items-center justify-center shrink-0 bg-[#fbfbf9] transition-all duration-500 group-hover:scale-105 group-hover:bg-slate-500 group-hover:text-white group-hover:border-cyan-500">
+                                    <div data-cursor="light" className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-full border-[1.5px] border-slate-900 flex items-center justify-center shrink-0 bg-[#fbfbf9] transition-all duration-500 group-hover:scale-105 group-hover:bg-slate-500 group-hover:text-white group-hover:border-cyan-500">
                                         <span className="text-2xl md:text-3xl lg:text-4xl ubuntu-bold">60%</span>
                                     </div>
                                     <div>
@@ -99,7 +100,7 @@ const WhyChooseUs = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row items-start sm:items-center gap-4 sm:gap-6 relative z-20 ml-0 sm:-ml-8 md:-ml-12 lg:-ml-16 group">
-                                    <div className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-full border-[1.5px] border-slate-900 flex items-center justify-center shrink-0 bg-[#fbfbf9] duration-500 group-hover:scale-105 group-hover:bg-slate-500 group-hover:text-white group-hover:border-cyan-500 transition-all">
+                                    <div data-cursor="light" className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-full border-[1.5px] border-slate-900 flex items-center justify-center shrink-0 bg-[#fbfbf9] duration-500 group-hover:scale-105 group-hover:bg-slate-500 group-hover:text-white group-hover:border-cyan-500 transition-all">
                                         <span className="text-2xl md:text-3xl lg:text-4xl ubuntu-bold">95%</span>
                                     </div>
                                     <div>
@@ -108,7 +109,7 @@ const WhyChooseUs = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row items-start sm:items-center gap-4 sm:gap-6 relative z-30 group">
-                                    <div className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-full border-[1.5px] border-slate-900 flex items-center justify-center shrink-0 bg-[#fbfbf9] transition-all duration-500 group-hover:scale-105 group-hover:bg-slate-500 group-hover:text-white group-hover:border-cyan-500">
+                                    <div data-cursor="light" className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-full border-[1.5px] border-slate-900 flex items-center justify-center shrink-0 bg-[#fbfbf9] transition-all duration-500 group-hover:scale-105 group-hover:bg-slate-500 group-hover:text-white group-hover:border-cyan-500">
                                         <span className="text-2xl md:text-3xl lg:text-4xl ubuntu-bold">70%</span>
                                     </div>
                                     <div>
@@ -143,13 +144,13 @@ const WhyChooseUs = () => {
                                     </div>
                                     <div>
                                         <h3 className="text-4xl md:text-6xl lg:text-7xl ubuntu-bold tracking-tighter mb-1 md:mb-2 text-white">
-                                            <span ref={el => counterRefs.current[2] = el}>0</span>
+                                            <span ref={el => counterRefs.current[2] = el}>0</span>+
                                         </h3>
                                         <p className="text-sm md:text-lg ubuntu-medium text-[#90a1b9] leading-tight">Years of Experience</p>
                                     </div>
                                     <div>
                                         <h3 className="text-4xl md:text-6xl lg:text-7xl ubuntu-bold tracking-tighter mb-1 md:mb-2 text-white">
-                                            <span ref={el => counterRefs.current[3] = el}>0</span>+
+                                            <span ref={el => counterRefs.current[3] = el}>0</span>
                                         </h3>
                                         <p className="text-sm md:text-lg ubuntu-medium text-[#90a1b9] leading-tight">Team Members</p>
                                     </div>
@@ -158,12 +159,12 @@ const WhyChooseUs = () => {
                             
                             <div className="relative h-[35vh] md:h-[45vh] lg:h-full w-full flex items-center justify-center lg:pl-10 mt-8 lg:mt-0">
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-linear-to-tr from-cyan-300/40 to-emerald-300/40 rounded-full blur-[80px] z-0 pointer-events-none"></div>
-                                <div className="relative z-10 w-[85%] h-[80%] rounded-2xl md:rounded-[2rem] overflow-hidden shadow-2xl transition-all duration-700 hover:scale-[1.02] border border-slate-200/50">
+                                <div data-cursor="light" className="relative z-10 w-[85%] h-[80%] rounded-2xl md:rounded-[2rem] overflow-hidden shadow-2xl transition-all duration-700 hover:scale-[1.02] border border-slate-200/50">
                                     <img src={img1} alt="Team" className="w-full h-full object-cover" />
                                     <div className="absolute inset-0 bg-linear-to-t from-slate-900/50 via-transparent to-transparent"></div>
                                 </div>
                                 <div className="absolute bottom-[5%] -left-[2%] md:-left-[5%] lg:-left-[10%] z-20 w-[55%] h-[45%] rounded-xl md:rounded-[2rem] border-4 md:border-[6px] border-[#fbfbf9] overflow-hidden shadow-xl transition-all duration-700 hover:scale-105 hover:-rotate-2 origin-bottom-left">
-                                    <img src={img2} alt="Teamwork" className="w-full h-full object-cover" />
+                                    <img data-cursor="light" src={img2} alt="Teamwork" className="w-full h-full object-cover" />
                                 </div>
                                 <div className="absolute top-[10%] md:top-[15%] -left-[2%] lg:-left-[8%] z-30 bg-white backdrop-blur-md border border-white/50 rounded-full px-3 md:px-5 py-2 md:py-3 shadow-lg flex items-center gap-2 md:gap-3 transition-transform duration-500 hover:-translate-y-1 hover:shadow-cyan-500/20">
                                     <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-cyan-400 animate-pulse"></div>
@@ -186,7 +187,7 @@ const WhyChooseUs = () => {
                             <h2 className="text-4xl md:text-6xl lg:text-8xl ubuntu-semibold tracking-tight mb-8 md:mb-12 text-center max-w-5xl leading-[1.05] text-[#90a1b9]">
                                 Let's build something <br className="hidden md:block" /> great together!
                             </h2>
-                            <CircleButton text={"Start a Project"} theme="dark" />
+                            <CircleButton text={"Start a Project"} theme="dark" onClick={() => navigate('/contact')} />
                         </div>
                     </div>
                     

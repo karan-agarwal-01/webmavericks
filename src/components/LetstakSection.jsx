@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import SplitType from "split-type";
 import CircleButton from "./CircleButton";
+import { useNavigate } from "react-router-dom";
 
 const LetstakSection = () => {
 
@@ -10,6 +11,8 @@ const LetstakSection = () => {
     const headingRef = useRef(null);
     const subtitleRef = useRef(null);
     const btnRef = useRef(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -67,7 +70,7 @@ const LetstakSection = () => {
                     We would love to hear <br className="hidden md:block" /> more about your project
                 </h2>
                 <div ref={btnRef}>
-                    <CircleButton text={"Let's Talk Us"} />
+                    <CircleButton text={"Let's Talk Us"} onClick={() => navigate('/contact')} />
                 </div>
             </div>
         </section>

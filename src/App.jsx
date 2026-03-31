@@ -8,11 +8,19 @@ import AboutPage from './pages/AboutPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ServicePage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
+import Preloader from './components/Loader';
+import { useState } from 'react';
+import AnimatedPortfolio from './pages/PortfolioPage';
 
 export default function App() {
+
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
+    <>
+    {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
     <BrowserRouter>
-      <SmoothScrolling>
+      <SmoothScrolling isLoading={isLoading}>
         <CustomCursor />
         <Navbar />
         <Routes>
@@ -20,9 +28,11 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicePage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/portfolio" element={<AnimatedPortfolio />} />
         </Routes>
         <FooterSection />
       </SmoothScrolling>
     </BrowserRouter>
+    </>
   );
 }
