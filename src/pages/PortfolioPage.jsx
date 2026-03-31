@@ -4,39 +4,47 @@ import { useGSAP } from '@gsap/react';
 import SplitType from "split-type";
 import LetstakSection from '../components/LetstakSection';
 import { FiEye } from 'react-icons/fi';
+import weblinqo from "../assets/images/brave_screenshot_weblinqo.com.png";
+import jetpage from "../assets/images/brave_screenshot_jetpage.co.png";
+import srbets from '../assets/images/srbets.png';
+import legacyOrb from '../assets/images/Screenshot 2026-03-31 204237.png';
 
 const projects = [
   { 
     id: "01", 
-    title: "NEURAL INTERFACE", 
-    desc: "A futuristic dashboard designed for real-time neural data visualization and biometric feedback tracking.", 
-    img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070",
-    stack: ["React", "Three.js", "WebAudio"],
-    accent: "#6366f1"
+    title: "WEBLINQO", 
+    desc: "We built a platform that helps creators and businesses monetize their social media through personalized domain pages. It offers customizable templates and dynamic link management for easy branding and control. The frontend is developed using React.js and Tailwind CSS for a modern, responsive experience, with Redux Toolkit for efficient state management. Stripe integration ensures secure subscriptions and seamless payment processing.", 
+    img: weblinqo,
+    stack: ["React Js", "Redux Toolkit", "Tailwind CSS", "Stripe", "Django"],
+    accent: "#6366f1",
+    link: "https://weblinqo.com"
   },
   { 
     id: "02", 
-    title: "VIRTUAL ATELIER", 
-    desc: "An immersive 3D gallery space allowing high-fashion brands to showcase digital twins of their seasonal collections.", 
-    img: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=2070",
-    stack: ["Next.js", "GSAP", "Tailwind"],
-    accent: "#ec4899"
+    title: "JETPAGE", 
+    desc: "Built a fast and intuitive website creation tool with professionally designed templates and customizable UI components. It enables users to create modern, professional websites quickly without any coding knowledge. Designed for both beginners and developers, the platform offers flexibility, ease of use, and rapid deployment.", 
+    img: jetpage,
+    stack: ["React Js", "Redux Toolkit", "Tailwind CSS"],
+    accent: "#ec4899",
+    link: "https://jetpage.co"
   },
   { 
     id: "03", 
-    title: "CRYPTO PULSE", 
-    desc: "High-frequency trading platform with a focus on minimalist data presentation and ultra-low latency updates.", 
-    img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2064",
-    stack: ["Rust", "Wasm", "TypeScript"],
-    accent: "#10b981"
+    title: "SRBETS", 
+    desc: "Developed a real-time sports and gaming platform with live updates and dynamic user interactions, powered by React.js and Redux Toolkit. Built high-performance, responsive interfaces using Tailwind CSS to handle frequent data updates smoothly. Integrated secure authentication and payment systems while ensuring reliability and compliance with industry standards.", 
+    img: srbets,
+    stack: ["React Js", "Redux Toolkit", "Tailwind CSS"],
+    accent: "#10b981",
+    link: '',
   },
   { 
     id: "04", 
-    title: "ORBITAL OS", 
-    desc: "Experimental operating system concept for spatial computing and multi-layered window management.", 
-    img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072",
-    stack: ["Framer", "SwiftUI", "Python"],
-    accent: "#f59e0b"
+    title: "LEGECY ORB", 
+    desc: "Legacy Orb is an innovative mobile application built using modern technologies like React Native, designed to help individuals preserve, document, and share their life stories in a meaningful and lasting way. The app acts as a digital storytelling platform where users can transform their personal experiences, memories, and life journeys into biographies, books, and interactive legacy formats", 
+    img: legacyOrb,
+    stack: ["React Native", "Redux Toolkit"],
+    accent: "#f59e0b",
+    link: "",
   },
 ];
 
@@ -171,13 +179,15 @@ export default function CombinedPortfolio() {
               </span>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full max-w-7xl z-10">
-                <div className="group relative aspect-video md:aspect-16/10 lg:aspect-square overflow-hidden rounded-xl md:rounded-2xl bg-zinc-900 border border-white/5">
+                <div className="group relative aspect-video md:aspect-16/10 lg:aspect-video overflow-hidden rounded-xl md:rounded-2xl bg-zinc-900 border border-white/5">
                   <img src={proj.img} alt={proj.title} className="w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-1000 ease-out" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                    <button className="flex items-center gap-2 md:gap-3 px-6 py-3 md:px-8 md:py-4 bg-white text-black rounded-full ubuntu-bold shadow-2xl hover:scale-105 transition-transform text-sm md:text-base">
-                      <FiEye size={18} />
-                      View Project
-                    </button>
+                    <a href={proj.link}>
+                        <button className="cursor-pointer flex items-center gap-2 md:gap-3 px-6 py-3 md:px-8 md:py-4 bg-white text-black rounded-full ubuntu-bold shadow-2xl hover:scale-105 transition-transform text-sm md:text-base">
+                        <FiEye size={18} />
+                        View Project
+                        </button>
+                    </a>
                   </div>
                 </div>
 
