@@ -8,9 +8,9 @@ import AboutPage from './pages/AboutPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ServicePage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
-import Preloader from './components/Loader';
-import { useState } from 'react';
 import AnimatedPortfolio from './pages/PortfolioPage';
+import { Toaster } from 'react-hot-toast';
+import CaseStudiesPage from './pages/CaseStudyPage';
 
 export default function App() {
 
@@ -25,8 +25,10 @@ export default function App() {
           <Route path="/services" element={<ServicePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/portfolio" element={<AnimatedPortfolio />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
         </Routes>
         <FooterSection />
+        <Toaster />
       </SmoothScrolling>
     </BrowserRouter>
   );

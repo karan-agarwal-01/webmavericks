@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { FiMail, FiPhone, FiX } from "react-icons/fi";
+import { FaLaptopCode } from "react-icons/fa";
+
 import SplitType from "split-type";
 import { 
     FiHome, 
@@ -8,6 +10,7 @@ import {
     FiLayers, 
     FiPhoneCall, 
     FiLinkedin,
+    FiBookOpen
 } from "react-icons/fi";
 import { GoLocation, GoProjectSymlink } from "react-icons/go";
 
@@ -16,7 +19,10 @@ const navLinks = [
     { name: "About Us", icon: FiUsers, href: "/about" },
     { name: "Services", icon: FiLayers, href: "/services" },
     { name: "Contact us", icon: FiPhoneCall, href: "/contact" },
-    { name: "Portfolio", icon: GoProjectSymlink, href: "/portfolio" },
+    { name: "Work", icon: GoProjectSymlink, sublinks: [
+        { name: "Portfolio", icon: FaLaptopCode, href: "/portfolio"},
+        { name: "Case Studies", icon: FiBookOpen, href: "/case-studies"},
+    ]},
 ];
 
 const socialLinks = [
@@ -25,6 +31,7 @@ const socialLinks = [
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isWorkOpen, setIsWorkOpen] = useState(false);
     
     const headerRef = useRef(null);
     const menuIconRef = useRef(null);
@@ -33,6 +40,7 @@ const Navbar = () => {
     const menuTl = useRef(null); 
     
     const ctaRef = useRef(null);
+    const dropdownRef = useRef(null);
 
 
     useEffect(() => {
@@ -134,8 +142,18 @@ const Navbar = () => {
         } else {
             menuTl.current.timeScale(2.5).reverse();
             document.body.style.overflow = "auto";
+            setTimeout(() => setIsWorkOpen(false), 500);
         }
     }, [isOpen]);
+
+    useEffect(() => {
+        if (!dropdownRef.current) return;
+        if (isWorkOpen) {
+            gsap.to(dropdownRef.current, { height: "auto", opacity: 1, duration: 0.4, ease: "power3.out" });
+        } else {
+            gsap.to(dropdownRef.current, { height: 0, opacity: 0, duration: 0.3, ease: "power3.in" });
+        }
+    }, [isWorkOpen]);
 
     const handleMenuEnter = () => {
         if (isOpen) return; 
@@ -152,7 +170,7 @@ const Navbar = () => {
     };
 
     const handleLinkEnter = (e) => {
-        const text = e.currentTarget.querySelector('.nav-link-text');
+        const text = e.currentTarget.querySelector('.nav-link-text, .sub-link-text');
         const icon = e.currentTarget.querySelector('.nav-link-icon');
         const chars = e.currentTarget.querySelectorAll('.char');
 
@@ -170,7 +188,7 @@ const Navbar = () => {
         }
     };
     const handleLinkLeave = (e) => {
-        const text = e.currentTarget.querySelector('.nav-link-text');
+        const text = e.currentTarget.querySelector('.nav-link-text, .sub-link-text');
         const icon = e.currentTarget.querySelector('.nav-link-icon');
         const chars = e.currentTarget.querySelectorAll('.char');
         
@@ -216,7 +234,7 @@ const Navbar = () => {
                 <button 
                     onClick={() => setIsOpen(false)}
                     data-cursor-interactive
-                    className="menu-shape absolute top-8 right-6 md:right-12 z-50 w-16 h-16 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:rotate-90 transition-all duration-500"
+                    className="menu-shape absolute top-8 right-6 md:right-12 z-50 w-16 h-16 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:rotate-90 transition-all duration-500 cursor-pointer"
                 >
                     <FiX size={32} className="text-white" />
                 </button>
@@ -263,25 +281,45 @@ const Navbar = () => {
                         </a>    
                     </div>
 
-                    <div className="flex flex-col justify-center items-center w-full lg:mx-16 lg:w-full h-[70vh] lg:max-w-md lg:h-full z-20 order-1 lg:order-2 lg:py-0 pb-8">
-                        <nav className="flex flex-col gap-6 w-max justify-center items-start">
+                    <div className="flex flex-col justify-center items-start w-full lg:mx-16 lg:w-full h-[70vh] lg:max-w-md lg:h-full z-20 order-1 lg:order-2 lg:py-0 pb-8 pl-8 md:pl-0">
+                        <nav className="flex flex-col gap-4 w-max items-start">
                             {navLinks.map((link, idx) => (
-                                <div key={idx} className="overflow-hidden py-3">
-                                    <a 
-                                        href={link.href}
-                                        onClick={() => setIsOpen(false)}
-                                        onMouseEnter={handleLinkEnter}
-                                        onMouseLeave={handleLinkLeave}
-                                        data-cursor-interactive
-                                        className="group flex gap-4 md:gap-5 items-center w-max pr-8 md:pr-16 text-white"
-                                    >
-                                        <div className="nav-link-icon shrink-0 text-white">
-                                            <link.icon className="w-8 h-8 md:w-10 md:h-10" />
+                                <div key={idx} className="overflow-hidden py-3 flex flex-col items-start w-full">
+                                    {link.sublinks ? (
+                                        <>
+                                        <button onClick={() => setIsWorkOpen(!isWorkOpen)} onMouseEnter={handleLinkEnter} onMouseLeave={handleLinkLeave} data-cursor-interactive className="group flex gap-4 md:gap-5 items-center w-max pr-8 md:pr-16 text-white cursor-pointer">
+                                            <div className="nav-link-icon shrink-0 text-white">
+                                                <link.icon className="w-8 h-8 md:w-10 md:h-10" />
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <span className="nav-link-text block text-3xl md:text-4xl ubuntu-bold text-slate-200 tracking-tighter">
+                                                    {link.name}
+                                                </span>
+                                            </div>
+                                        </button>
+                                        <div ref={dropdownRef} className="h-0 opacity-0 overflow-hidden pl-14 md:pl-18 mt-6 pr-12 flex flex-col gap-5">
+                                            {link.sublinks.map((sub, sIdx) => (
+                                                <a key={sIdx} href={sub.href} onClick={() => setIsOpen(false)} onMouseEnter={handleLinkEnter}onMouseLeave={handleLinkLeave} className="group flex flex-row items-center gap-4 w-max cursor-pointer">
+                                                    <div className="nav-link-icon shrink-0 text-white">
+                                                        <sub.icon className="w-5 h-5 md:w-7 md:h-7" />
+                                                    </div>
+                                                    <span className="nav-link-text text-xl md:text-2xl ubuntu-medium text-slate-300">
+                                                        {sub.name}
+                                                    </span>
+                                                </a>
+                                            ))}
                                         </div>
-                                        <span className="nav-link-text block text-3xl md:text-4xl ubuntu-bold text-slate-200 tracking-tighter">
-                                            {link.name}
-                                        </span>
-                                    </a>
+                                        </>
+                                    ) : (
+                                        <a href={link.href} onClick={() => setIsOpen(false)} onMouseEnter={handleLinkEnter} onMouseLeave={handleLinkLeave} data-cursor-interactive className="group flex gap-4 md:gap-5 items-center w-max pr-8 md:pr-16 text-white">
+                                            <div className="nav-link-icon shrink-0 text-white">
+                                                <link.icon className="w-8 h-8 md:w-10 md:h-10" />
+                                            </div>
+                                            <span className="nav-link-text block text-3xl md:text-4xl ubuntu-bold text-slate-200 tracking-tighter">
+                                                {link.name}
+                                            </span>
+                                        </a>
+                                    )}
                                 </div>
                             ))}
                         </nav>

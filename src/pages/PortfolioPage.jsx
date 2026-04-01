@@ -44,7 +44,7 @@ const projects = [
     img: legacyOrb,
     stack: ["React Native", "Redux Toolkit"],
     accent: "#f59e0b",
-    link: "",
+    link: "https://play.google.com/store/apps/details?id=com.legacyorb&pcampaignid=web_share&pli=1",
   },
 ];
 
@@ -59,16 +59,21 @@ export default function CombinedPortfolio() {
   const shapeRef = useRef([]);
 
   useGSAP(() => {
-    headingSplitRef.current = new SplitType(headingRef.current, { types: "words, chars" });
 
-    gsap.from(headingSplitRef.current.chars, {
-      y: 60,
-      opacity: 0,
-      rotateX: -30,
-      duration: 1.2,
-      stagger: 0.02,
-      ease: "expo.out",
-      delay: 0.2
+    document.fonts.ready.then(() => {
+      if (!headingRef.current) return;
+
+          headingSplitRef.current = new SplitType(headingRef.current, { types: "chars" });
+
+          gsap.from(headingSplitRef.current.chars, {
+          y: 40,
+          opacity: 0,
+          filter: "blur(10px)",
+          duration: 1.5,
+          stagger: 0.04,
+          ease: "power4.out",
+          delay: 0.2
+          });
     });
 
     gsap.to(orb1Ref.current, { x: "15vw", y: "15vh", scale: 1.2, duration: 8, ease: "sine.inOut", yoyo: true, repeat: -1 });
@@ -180,7 +185,7 @@ export default function CombinedPortfolio() {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full max-w-7xl z-10">
                 <div className="group relative aspect-video md:aspect-16/10 lg:aspect-video overflow-hidden rounded-xl md:rounded-2xl bg-zinc-900 border border-white/5">
-                  <img src={proj.img} alt={proj.title} className="w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-1000 ease-out" />
+                  <img src={proj.img} alt={proj.title} className="w-full h-full object-contain opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-1000 ease-out" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                     <a href={proj.link}>
                         <button className="cursor-pointer flex items-center gap-2 md:gap-3 px-6 py-3 md:px-8 md:py-4 bg-white text-black rounded-full ubuntu-bold shadow-2xl hover:scale-105 transition-transform text-sm md:text-base">

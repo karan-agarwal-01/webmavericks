@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
-import { FiMail, FiPhone, FiMapPin, FiSend } from "react-icons/fi";
+import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import ContactHeroSection from "../components/ContactHeroSection";
+import { toast } from "react-hot-toast";
 
 
 const ContactPage = () => {
@@ -59,13 +60,36 @@ const ContactPage = () => {
         return () => ctx.revert();
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        setTimeout(() => {
-            setIsSubmitting(false);
-            alert("Message sent successfully!");
-        }, 2000);
+
+        const formData = new FormData(formRef.current);
+        const userSubject = formData.get("user_subject");
+
+        formData.append("access_key", import.meta.env.VITE_CONTACT_API);
+        formData.append("subject", userSubject);
+        
+        try {
+            const res = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await res.json();
+            
+            if (data.success) {
+                toast.success("Message sent successfully");
+                formRef.current.reset();
+            } else {
+                console.error("Error", data);
+                toast.error("Something went wrong");
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error("Network error");
+        }
+        setIsSubmitting(false);
     };
 
     return (
@@ -123,83 +147,34 @@ const ContactPage = () => {
                     </div>
                 </div>
                 <div className="w-full lg:w-5/12 perspective-[1000px] mt-12 lg:mt-0">
-                    <form 
-                        ref={formRef} 
-                        onSubmit={handleSubmit} 
-                        className="w-full bg-white/30 backdrop-blur-2xl border border-white/60 p-4 md:p-10 rounded-lg shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] flex flex-col gap-6 relative overflow-hidden group"
-                    >
+                    <form ref={formRef} onSubmit={handleSubmit} className="w-full bg-white/30 backdrop-blur-2xl border border-white/60 p-4 md:p-10 rounded-lg shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] flex flex-col gap-6 relative overflow-hidden group">
                         <div className="absolute -top-32 -right-32 w-64 h-64 bg-cyan-400/20 blur-[60px] rounded-full pointer-events-none transition-transform duration-700 group-hover:scale-150"></div>
                         <div className="flex flex-col gap-6">
                             <div className="form-field relative w-full">
-                                <input
-                                    type="text"
-                                    id="name"
-                                    className="peer w-full bg-white/40 backdrop-blur-md border border-white/50 rounded-xl px-6 py-4 pt-6 text-slate-900 outline-none focus:bg-white/70 focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10 transition-all duration-300 placeholder-transparent shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]"
-                                    placeholder="Name"
-                                    required
-                                />
-                                <label
-                                    htmlFor="name"
-                                    className="absolute left-6 top-5 text-slate-500 text-sm ubuntu-medium transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-5 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-cyan-500 peer-valid:-translate-y-3 peer-valid:text-xs pointer-events-none"
-                                >
-                                    Your Name
-                                </label>
+                                <input type="text" name="name" id="name" className="peer w-full bg-white/40 backdrop-blur-md border border-white/50 rounded-xl px-6 py-4 pt-6 text-slate-900 outline-none focus:bg-white/70 focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10 transition-all duration-300 placeholder-transparent shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]" placeholder="Name" required />
+                                <label htmlFor="name" className="absolute left-6 top-5 text-slate-500 text-sm ubuntu-medium transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-5 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-cyan-500 peer-valid:-translate-y-3 peer-valid:text-xs pointer-events-none"
+                                >Your Name</label>
                             </div>
                             <div className="form-field relative w-full">
-                                <input
-                                    type="email"
-                                    id="email"
-                                    className="peer w-full bg-white/40 backdrop-blur-md border border-white/50 rounded-xl px-6 py-4 pt-6 text-slate-900 outline-none focus:bg-white/70 focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10 transition-all duration-300 placeholder-transparent shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]"
-                                    placeholder="Email"
-                                    required
-                                />
-                                <label
-                                    htmlFor="email"
-                                    className="absolute left-6 top-5 text-slate-500 text-sm ubuntu-medium transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-5 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-cyan-500 peer-valid:-translate-y-3 peer-valid:text-xs pointer-events-none"
-                                >
-                                    Email Address
-                                </label>
+                                <input type="email" name="email" id="email" className="peer w-full bg-white/40 backdrop-blur-md border border-white/50 rounded-xl px-6 py-4 pt-6 text-slate-900 outline-none focus:bg-white/70 focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10 transition-all duration-300 placeholder-transparent shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]" placeholder="Email" required />
+                                <label htmlFor="email" className="absolute left-6 top-5 text-slate-500 text-sm ubuntu-medium transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-5 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-cyan-500 peer-valid:-translate-y-3 peer-valid:text-xs pointer-events-none"
+                                >Email Address</label>
                             </div>
                             <div className="form-field relative w-full">
-                                <input
-                                    type="text"
-                                    id="subject"
-                                    className="peer w-full bg-white/40 backdrop-blur-md border border-white/50 rounded-xl px-6 py-4 pt-6 text-slate-900 outline-none focus:bg-white/70 focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10 transition-all duration-300 placeholder-transparent shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]"
-                                    placeholder="Subject"
-                                    required
-                                />
-                                <label
-                                    htmlFor="subject"
-                                    className="absolute left-6 top-5 text-slate-500 text-sm ubuntu-medium transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-5 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-cyan-500 peer-valid:-translate-y-3 peer-valid:text-xs pointer-events-none"
-                                >
-                                    Subject
-                                </label>
+                                <input type="text" name="user_subject" id="subject" className="peer w-full bg-white/40 backdrop-blur-md border border-white/50 rounded-xl px-6 py-4 pt-6 text-slate-900 outline-none focus:bg-white/70 focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10 transition-all duration-300 placeholder-transparent shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]" placeholder="Subject" required />
+                                <label htmlFor="subject" className="absolute left-6 top-5 text-slate-500 text-sm ubuntu-medium transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-5 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-cyan-500 peer-valid:-translate-y-3 peer-valid:text-xs pointer-events-none">Subject</label>
                             </div>
                             <div className="form-field relative w-full">
-                                <textarea
-                                    id="message"
-                                    rows="4"
-                                    className="peer w-full bg-white/40 backdrop-blur-md border border-white/50 rounded-xl px-6 py-4 pt-8 text-slate-900 outline-none focus:bg-white/70 focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10 transition-all duration-300 placeholder-transparent resize-none shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]"
-                                    placeholder="Message"
-                                    required
-                                ></textarea>
-                                <label
-                                    htmlFor="message"
-                                    className="absolute left-6 top-5 text-slate-500 text-sm ubuntu-medium transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-6 peer-focus:-translate-y-2 peer-focus:text-xs peer-focus:text-cyan-500 peer-valid:-translate-y-2 peer-valid:text-xs pointer-events-none"
-                                >
-                                    Tell us about your project...
-                                </label>
+                                <textarea name="message" id="message" rows="4" className="peer w-full bg-white/40 backdrop-blur-md border border-white/50 rounded-xl px-6 py-4 pt-8 text-slate-900 outline-none focus:bg-white/70 focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10 transition-all duration-300 placeholder-transparent resize-none shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]" placeholder="Message" required></textarea>
+                                <label htmlFor="message" className="absolute left-6 top-5 text-slate-500 text-sm ubuntu-medium transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-6 peer-focus:-translate-y-2 peer-focus:text-xs peer-focus:text-cyan-500 peer-valid:-translate-y-2 peer-valid:text-xs pointer-events-none"
+                                >Tell us about your project...</label>
                             </div>
 
                         </div>
                         <div className="form-field mt-2">
-                            <button
-                                type="submit"
-                                disabled={isSubmitting}
-                                className="group relative w-full flex justify-center items-center gap-4 bg-slate-900 text-white ubuntu-bold text-lg px-8 py-5 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_10px_20px_rgba(15,23,42,0.15)] disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer hover:bg-sky-600"
-                            >
+                            <button type="submit" disabled={isSubmitting} className="group relative w-full flex justify-center items-center gap-4 bg-slate-900 text-white ubuntu-bold text-lg px-8 py-5 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_10px_20px_rgba(15,23,42,0.15)] disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer hover:bg-sky-600">
                                 <span className="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-500">
-                                    {isSubmitting ? "Sending..." : "Send Message"}
+                                    {isSubmitting ? <span className="animate-pulse">Sending...</span> : "Send Message"}
                                 </span>
                             </button>
                         </div>
